@@ -1,0 +1,39 @@
+.container{
+    margin-left:10px;
+    margin-right: 10px;
+    background: gray;
+}
+.header{
+    text-align: center;
+    color:black;
+    font-size:100px;
+    background: lightcyan;
+}
+.title_text{
+    animation: pompa 15s infinite;
+    text-align: center;
+    color:black;
+    font-size:100px;
+    background: lightcyan;
+}
+.movies{
+    float:left;
+    border: 1px solid black;
+    width: auto;
+    height: auto;
+    margin: 10px;
+    text-align: center;
+    background-color: lightblue;
+}
+@keyframes pompa{
+    0% {color:red;}
+    10% {color:blue;}
+    20% {color:blueviolet;}
+    30% {color:yellow;}
+    40% {color:cyan;}
+    50% {color:green;}
+    60% {color:royalblue;}
+    70% {color: tomato;}
+    80% {color:aquamarine;}
+    90% {color:yellowgreen;}
+    100% {color:teal;}}
