@@ -4,7 +4,6 @@
     <title> TopMovies</title>
     <link rel="stylesheet" href="css.css">
 </head>
-<body bgcolor="lightcyan">
 <div class="container">
  <p class="title_text">TopMovies</p>
 <!-- TWORZY POLACZENIE Z BAZA DANYCH, SQL TO ZAPYTANIE A WHILE PRINTUJE PO KOLEI RZECZY Z TABELI WYBRANE SELECTEM -->

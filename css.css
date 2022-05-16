@@ -1,3 +1,6 @@
+body{
+    background-color: lightcyan;
+}
 .container{
     margin-left:10px;
     margin-right: 10px;
@@ -25,8 +28,9 @@
     text-align: center;
     background-color: lightblue;
 }
+
 @keyframes pompa{
-    0% {color:red;}
+    0% {color:limegreen;}
     10% {color:blue;}
     20% {color:blueviolet;}
     30% {color:yellow;}
