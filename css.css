@@ -89,7 +89,7 @@ p{
     display: inline-block;
     float: left;
     border: 1px solid black;
-    width: auto;
+    width: 200px;
     height: auto;
     margin-left:10px;
     margin-right: 10px;
@@ -97,17 +97,27 @@ p{
     text-align: center;
     background-color: lightblue;
 }
-.movies:hover{
-    float:left;
-    border: 1px solid black;
-    width: auto;
-    height: auto;
-    margin-left:10px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    text-align: center;
-    background-color: lightgreen;
 
+.dodaj_do_koszyka_butt{
+    background-color: green;
+    border: none;
+    padding: 15px 15px;
+    color:white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size:16px;
+    border-radius: 8px;
+}
+.dodaj_do_koszyka_butt:hover{
+    background-color: gray;
+    border: none;
+    padding: 15px 15px;
+    color:black;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    fonti-size:16px;
 }
 
 
