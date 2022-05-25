@@ -5,7 +5,12 @@
     <link rel="stylesheet" href="css.css">
 </head>
 <body>
-
+<div class="nawigacyjny">
+    <a> Koszyk</a>
+    <p> Strona Główna </p>
+    <p> O nas </p>
+    <p> Dostawa/Płatnośc </p>
+</div>
  <p class="title_text">TopMovies</p>
  <p class="subtitle_text">Najlepsze filmy w zasięgu twojej ręki!</p><br><br><br>
 
@@ -17,7 +22,7 @@
             <option value="Crime/Drama">Crime/Drama</option>
             <option value="Action/Sci-Fi">Action/Sci-Fi</option>
             <option value="Biography">Biography</option>
-            <option value="Horror">Biography</option>
+            <option value="Horror">Horror</option>
 
         </select>
         <input name="formsub" type="submit" value="Sortuj">
