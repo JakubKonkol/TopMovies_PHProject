@@ -17,6 +17,7 @@
             <option value="Crime/Drama">Crime/Drama</option>
             <option value="Action/Sci-Fi">Action/Sci-Fi</option>
             <option value="Biography">Biography</option>
+            <option value="Horror">Biography</option>
 
         </select>
         <input name="formsub" type="submit" value="Sortuj">
