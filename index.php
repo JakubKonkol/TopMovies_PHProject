@@ -1,6 +1,7 @@
 <?php
 $polaczenie = mysqli_connect("127.0.0.1", "root", "", "TopMovies");
 $GatunekSet=true;
+session_start();
 
 ?>
 <html>
@@ -12,7 +13,7 @@ $GatunekSet=true;
 </head>
 <body>
 <div class="nawigacyjny">
-    <a> Koszyk</a>
+    <a onclick="Koszyk()"> Koszyk</a>
     <p onClick="MainPage()"> Strona Główna </p>
     <p> O nas </p>
     <p> Dostawa/Płatnośc </p>
@@ -75,6 +76,7 @@ if($GatunekSet) {
 }
 echo "</div>";
 ?>
+
 
 
 </body>
