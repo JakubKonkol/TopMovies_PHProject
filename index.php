@@ -34,7 +34,23 @@ session_start();
         <input name="formsub" type="submit" value="Sortuj">
         <input name="reset" type="submit" value="reset">
     </form>
+<?php
+if(isset($_POST['dodaj_do_koszyka']) AND isset($_SESSION['email'])){
+    $tytul = $_POST["tytul"];
+    $gatunek = $_POST["gatunek"];
+    $cena = $_POST["cena"];
+    $mail = $_SESSION['email']['email'];
+    $do_koszyka_sql = "INSERT INTO cart (tytul, gatunek, cena, user) VALUES ('$tytul', '$gatunek', '$cena','$mail')";
 
+    $polaczenie->query($do_koszyka_sql);
+
+
+}
+if(isset($_POST['dodaj_do_koszyka']) AND !isset($_SESSION['email'])){
+    echo "musisz byc zalogowany zeby dodawac do koszyka";
+}
+
+?>
 <?php
 echo "<div class='wrapper'>";
 if (isset($_POST['formsub'])) {
@@ -47,12 +63,16 @@ if (isset($_POST['formsub'])) {
     while($r=mysqli_fetch_row($res1)) {
         echo "
                 <div class='movies' >
-                <form method='POST' action='index.php?id=$r[5]'> 
+                <form method='POST' action='index.php'> 
                 <img src='$r[4]'width='200px' height='270px'>
                 <h3>$r[0] <br>
                 $r[1] <br> 
                 Ilośc w magazynie: $r[2] <br>
                  Cena: $r[3] PLN<br></h3>
+                 <input type='hidden' value='$r[0]' name='tytul'> 
+                 <input type='hidden' value='$r[1]' name='gatunek'>
+                 <input type='hidden' value='$r[3]' name='cena'>
+                 
                  <input class='dodaj_do_koszyka_butt' type='submit' value='Do koszyka!' name='dodaj_do_koszyka'>
                  </form>
                  </div>";
@@ -63,12 +83,16 @@ if($GatunekSet) {
     while ($r = mysqli_fetch_row($res)) {
         echo "
                 <div class='movies' >
-                <form method='POST' action='index.php?id=$r[5]'> 
+                <form method='POST' action='index.php'> 
                 <img src='$r[4]'width='200px' height='270px'>
                 <h3>$r[0] <br>
                 $r[1] <br> 
                 Ilośc w magazynie: $r[2] <br>
                  Cena: $r[3] PLN<br></h3>
+                 <input type='hidden' value='$r[0]' name='tytul'> 
+                 <input type='hidden' value='$r[1]' name='gatunek'>
+                 <input type='hidden' value='$r[3]' name='cena'>
+                 
                  <input class='dodaj_do_koszyka_butt' type='submit' value='Do koszyka!' name='dodaj_do_koszyka'>
                  </form>
                  </div>";
