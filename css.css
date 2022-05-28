@@ -1,6 +1,9 @@
 body{
     margin:0;
-    background-color: lightcyan;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;
 }
 p{
     margin:0.05em;
@@ -15,7 +18,7 @@ p{
     text-align: center;
     color:black;
     font-size:100px;
-    background: lightcyan;
+
 }
 .title_text{
     display: block;
@@ -24,7 +27,7 @@ p{
     text-align: center;
     color:black;
     font-size:100px;
-    background: lightcyan;
+
 }
 .nawigacyjny{
     height: 35px;
@@ -72,11 +75,19 @@ p{
     background-color: white;
 
 }
+.nawigacyjny span{
+    text-align: center;
+    float: left;
+    display: block;
+    padding: 10px 10px 10px 10px;
+    font-weight: bolder;
+    font-size:16px;
+}
 .subtitle_text{
     text-align: center;
     color:black;
     font-size:20px;
-    background: lightcyan;
+
 }
 .wrapper{
     margin-right: auto;
@@ -120,7 +131,6 @@ p{
     fonti-size:16px;
 }
 
-
 @keyframes pompa{
     0% {color:limegreen;}
     10% {color:blue;}
@@ -133,3 +143,14 @@ p{
     80% {color:aquamarine;}
     90% {color:yellowgreen;}
     100% {color:teal;}}
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}

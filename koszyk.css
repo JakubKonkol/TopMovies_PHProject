@@ -1,0 +1,105 @@
+table{
+    border: 1px solid black;
+}
+tr{
+    border: 1px solid black;
+}
+td{
+    border: 1px solid black;
+    width:150px;
+    text-align:center;
+    padding:5px
+}
+th{
+    border: 1px solid black;
+    width:150px;
+    text-align:center;
+    padding:5px;
+    background-color: slategray;
+    color: white;
+}
+.koszyktab{
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: aqua;
+}
+.usunbutt{
+    background-color: gray;
+    border:none;
+    padding: 7px 12px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 11px;
+    color:white;
+    font-weight: bold;
+}
+.usunbutt:hover{
+    background-color: red;
+    border:none;
+    padding: 7px 12px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 11px;
+    color:white;
+    font-weight: bold;
+}
+.nawigacyjny{
+    height: 35px;
+    width: 100%;
+    top:0;
+    position: fixed;
+    overflow: hidden;
+    background-color: black;
+}
+.nawigacyjny a{
+    float:right;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 10px 10px 10px 10px;
+    background-color: black;
+
+}
+.nawigacyjny a:hover{
+    float:right;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 10px 10px;
+    color:black;
+    background-color: green;
+
+}
+.nawigacyjny p{
+    float:left;
+    margin-right: 30px;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 10px 10px 10px 10px;
+    background-color: black;
+
+}
+.nawigacyjny p:hover{
+    float:left;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 10px 10px 10px 10px;
+    background-color: white;
+
+}
+body{
+    margin:0;
+    background-color: lightcyan;
+}
+p{
+    margin:0.05em;
+}
+.bodykoszyka{
+    margin-top:50px;
+
+}

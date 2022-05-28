@@ -3,23 +3,37 @@ $polaczenie = mysqli_connect("127.0.0.1", "root", "", "TopMovies");
 $GatunekSet=true;
 session_start();
 
+
 ?>
-<html>
+<html lang="PL">
 <head>
     <meta charset="UTF-8">
     <title> TopMovies</title>
     <link rel="stylesheet" href="css.css">
+    <link rel="stylesheet" href="fajnytext.css">
     <script src="functions.js"> </script>
 </head>
 <body>
 <div class="nawigacyjny">
     <a onclick="Koszyk()"> Koszyk</a>
+    <a onclick="Profil()"> Profil</a>
     <p onClick="MainPage()"> Strona Główna </p>
     <p> O nas </p>
     <p> Dostawa/Płatnośc </p>
+    <span id="alert" onclick="powiadomienie('')">  </span>
 </div>
  <p class="title_text">TopMovies</p>
- <p class="subtitle_text">Najlepsze filmy w zasięgu twojej ręki!</p><br><br><br>
+ <!-- <p class="subtitle_text">Najlepsze filmy w zasięgu twojej ręki!</p><br><br><br> -->
+    <div class="fajnytext"> <div class="scrollowanie-textu">
+            <ul>
+                <li style="color: white">Najlepsze</li>
+                <li style="color: white">Najtańsze</li>
+                <li style="color: white">Najnowsze</li>
+                <li style="color: white">Nagradzane</li>
+                <li style="color: white">Niesamowite</li>
+            </ul>
+        </div>
+        <span class="napisfilmy">Filmy</span></div> <br> <br> <br>
 
     <form action="index.php" method="POST" class="sortowanie_form">
         <label for="gatunki">Wybierz gatunek:</label>
@@ -35,20 +49,21 @@ session_start();
         <input name="reset" type="submit" value="reset">
     </form>
 <?php
-if(isset($_POST['dodaj_do_koszyka']) AND isset($_SESSION['email'])){
-    $tytul = $_POST["tytul"];
-    $gatunek = $_POST["gatunek"];
-    $cena = $_POST["cena"];
-    $mail = $_SESSION['email']['email'];
-    $do_koszyka_sql = "INSERT INTO cart (tytul, gatunek, cena, user) VALUES ('$tytul', '$gatunek', '$cena','$mail')";
-
-    $polaczenie->query($do_koszyka_sql);
+if(isset($_POST['dodaj_do_koszyka'])){
+    if(isset($_SESSION['email'])){
+        $tytul = $_POST["tytul"];
+        $gatunek = $_POST["gatunek"];
+        $cena = $_POST["cena"];
+        $mail = $_SESSION['email']['email'];
+        $do_koszyka_sql = "INSERT INTO cart (tytul, gatunek, cena, user) VALUES ('$tytul', '$gatunek', '$cena','$mail')";
+        $polaczenie->query($do_koszyka_sql);
+    }else{
+        echo "<script> powiadomienie('Musisz być zalogowany'); </script>";
+    }
 
 
 }
-if(isset($_POST['dodaj_do_koszyka']) AND !isset($_SESSION['email'])){
-    echo "musisz byc zalogowany zeby dodawac do koszyka";
-}
+
 
 ?>
 <?php

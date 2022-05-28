@@ -14,10 +14,11 @@
         <label for="polemail" class="sr-only">Adres e-mail</label>
         <input type="email" id="polemail" class="form-control" name="email" placeholder="Adres e-mail" required autofocus>
         <label for="polehaslo" class="sr-only">Hasło</label>
-        <input type="password" id="polehaslo" name="password" class="form-control" placeholder="Hasło" required> <br>
+        <input type="password" id="polehaslo" name="password" class="form-control" placeholder="Hasło" required>
         <input type="submit" class="btn btn-lg btn-primary btn-block" name="ClickZaloguj" value="Zaloguj!">
     </form>
-    <button class="btn btn-danger" onClick="MainPage()"> Strona główna </button>
+    <button class="btn btn-danger" onClick="MainPage()"> Strona główna </button> <br>
+    <a href="rejestracja.php"> Nie masz konta? Załóż teraz! </a>
 </div>
 
 </body>
