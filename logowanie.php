@@ -10,7 +10,7 @@
 <body class="text-center">
 <div class="container" >
     <form class="form-signin" action="zaloguj.php" method="post">
-        <h1 class="h3 mb-3 font-weight-normal">Musisz być zalogowany aby wejść do koszyka!</h1>
+        <h1 class="h3 mb-3 font-weight-normal">Zaloguj się!</h1>
         <label for="polemail" class="sr-only">Adres e-mail</label>
         <input type="email" id="polemail" class="form-control" name="email" placeholder="Adres e-mail" required autofocus>
         <label for="polehaslo" class="sr-only">Hasło</label>
