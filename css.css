@@ -21,6 +21,7 @@ p{
 
 }
 .title_text{
+    font-weight: bolder;
     display: block;
     margin-top: 20px;
     animation: pompa 15s infinite;
@@ -90,45 +91,71 @@ p{
 
 }
 .wrapper{
-    margin-right: auto;
-    margin-left:  auto;
-    max-width: 90%;
-    padding-right: 10px;
-    padding-left:  10px;
+    margin: 0 auto;
+    max-width: 95%;
+    padding-right: 16px;
+    padding-left:  16px;
 }
-.movies{
+.movies {
     display: inline-block;
     float: left;
     border: 1px solid black;
     width: 200px;
     height: auto;
-    margin-left:10px;
+    margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 10px;
     text-align: center;
-    background-color: lightblue;
+    background-color: lightcyan;
 }
-
+.movies form input{
+    margin-top:-5px;
+    margin-bottom: -5px;
+}
 .dodaj_do_koszyka_butt{
+    font-family: Quicksand;
+    height: 30px;
     background-color: green;
     border: none;
-    padding: 15px 15px;
+    padding: 6px 6px;
     color:white;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size:16px;
+    font-size:14px;
     border-radius: 8px;
+    width: 180px ;
 }
 .dodaj_do_koszyka_butt:hover{
-    background-color: gray;
+    background-color: darkgreen;
     border: none;
-    padding: 15px 15px;
-    color:black;
+    padding: 6px 6px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    fonti-size:16px;
+    font-size:14px;
+}
+.szczegolybutt{
+    font-family: Quicksand;
+    background-color:blue;
+    border: none;
+    padding: 6px 6px;
+    color:white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size:14px;
+    border-radius: 8px;
+    width: 180px ;
+}
+.szczegolybutt:hover{
+    background-color: darkblue;
+    border: none;
+    padding: 6px 6px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size:14px;
 }
 
 @keyframes pompa{

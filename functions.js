@@ -10,6 +10,9 @@ function Koszyk(){
 function Wyloguj(){
     window.location.href="wyloguj.php";
 }
+function Profil(){
+    window.location.href="profil.php";
+}
 function sprawdz_haslo(){
     if(document.getElementById("haslo").value == document.getElementById("phaslo").value){
         document.getElementById("warning").style.color = 'green';

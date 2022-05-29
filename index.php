@@ -3,14 +3,17 @@ $polaczenie = mysqli_connect("127.0.0.1", "root", "", "TopMovies");
 $GatunekSet=true;
 session_start();
 
-
 ?>
+
 <html lang="PL">
 <head>
     <meta charset="UTF-8">
     <title> TopMovies</title>
     <link rel="stylesheet" href="css.css">
     <link rel="stylesheet" href="fajnytext.css">
+    <link href="https://fonts.googleapis.com/css?family=Cardo:400,700|Oswald" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Archivo:500|Open+Sans:300,700" rel="stylesheet">
     <script src="functions.js"> </script>
 </head>
 <body>
@@ -23,7 +26,6 @@ session_start();
     <span id="alert" onclick="powiadomienie('')">  </span>
 </div>
  <p class="title_text">TopMovies</p>
- <!-- <p class="subtitle_text">Najlepsze filmy w zasięgu twojej ręki!</p><br><br><br> -->
     <div class="fajnytext"> <div class="scrollowanie-textu">
             <ul>
                 <li style="color: white">Najlepsze</li>
@@ -44,6 +46,7 @@ session_start();
             <option value="Biography">Biography</option>
             <option value="Horror">Horror</option>
             <option value="Comedy">Comedy</option>
+            <option value="Thriller">Thriller</option>
         </select>
         <input name="formsub" type="submit" value="Sortuj">
         <input name="reset" type="submit" value="reset">
@@ -90,6 +93,10 @@ if (isset($_POST['formsub'])) {
                  
                  <input class='dodaj_do_koszyka_butt' type='submit' value='Do koszyka!' name='dodaj_do_koszyka'>
                  </form>
+                 <form action='index.php' method='post'>
+                  <input type='hidden' value='$r[0]'>  
+                 <input type='submit' class='szczegolybutt' name='szczegoly' value='szczegoly'>
+                 </form>
                  </div>";
     }
 }
@@ -109,6 +116,10 @@ if($GatunekSet) {
                  <input type='hidden' value='$r[3]' name='cena'>
                  
                  <input class='dodaj_do_koszyka_butt' type='submit' value='Do koszyka!' name='dodaj_do_koszyka'>
+                 </form>
+                 <form action='index.php' method='post'>
+                 <input type='hidden' value='$r[0]'>  
+                 <input type='submit' class='szczegolybutt' name='szczegoly' value='szczegoly'>
                  </form>
                  </div>";
     }
