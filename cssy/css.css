@@ -25,6 +25,8 @@ p{
 
 }
 .nawigacyjny{
+    z-index: 9;
+    position:relative;
     height: 35px;
     width: 100%;
     top:0;

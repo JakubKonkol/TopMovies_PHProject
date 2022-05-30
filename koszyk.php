@@ -9,11 +9,12 @@ if(isset($_SESSION['email'])){
 
 
 ?>
-<html>
+<html lang="pl">
 <head>
-    <link rel="stylesheet" href="koszyk.css">
-    <script src="functions.js"> </script>
+    <link rel="stylesheet" href="cssy/koszyk.css">
+    <script src="scripts/functions.js"> </script>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <title>Koszyk</title>
 </head>
 <body>
 <div class="nawigacyjny">

@@ -13,6 +13,12 @@ function Wyloguj(){
 function Profil(){
     window.location.href="profil.php";
 }
+function Onas(){
+    window.location.href="onas.html";
+}
+function Dostawa(){
+    window.location.href="dostawa.html";
+}
 function sprawdz_haslo(){
     if(document.getElementById("haslo").value == document.getElementById("phaslo").value){
         document.getElementById("warning").style.color = 'green';
