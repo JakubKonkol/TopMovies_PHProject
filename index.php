@@ -22,8 +22,8 @@ session_start();
     <a onclick="Koszyk()"><i class="fi fi-rr-shopping-cart"></i> Koszyk</a>
     <a onclick="Profil()"><i class="fi fi-rr-user"></i> Profil</a>
     <p onClick="MainPage()"><i class="fi fi-rr-home"></i> Strona Główna </p>
-    <p> O nas </p>
-    <p> Dostawa/Płatnośc </p>
+    <p><i class="fi fi-rr-info"></i> O nas </p>
+    <p><i class="fi fi-rr-credit-card"></i> Dostawa/Płatnośc </p>
     <span id="alert" onclick="powiadomienie('')">  </span>
 </div>
  <p class="title_text">TopMovies</p>
@@ -37,7 +37,7 @@ session_start();
             </ul>
         </div>
         <span class="napisfilmy">Filmy</span></div> <br> <br> <br>
-
+    <div class="sortowanie_div">
     <form action="index.php" method="POST" class="sortowanie_form">
         <label for="gatunki">Wybierz gatunek:</label>
         <select id="gatunki" name="gatunki">
@@ -49,9 +49,17 @@ session_start();
             <option value="Comedy">Comedy</option>
             <option value="Thriller">Thriller</option>
         </select>
-        <input name="formsub" type="submit" value="Sortuj">
-        <input name="reset" type="submit" value="reset">
+
+        <input name="formsub" type="submit" value="Sortuj po gatunku">
     </form>
+        <form action="index.php" method="post">
+            <label for="zakrescen"> Maksymalna cena produktu (PLN): </label>
+            <input name="zakrescen" id="zakrescen" value="<?php if(isset($_POST['clickedceny'])){echo $_POST['zakrescen'];} else{echo 500;}?>" type="number" min="0" max="500"  >
+            <input type="submit" name="clickedceny" value="Sortuj po cenach">
+            <input name="reset" type="submit" value="reset">
+        </form>
+    </div>
+    <div class="content-filmy">
 <?php
 if(isset($_POST['dodaj_do_koszyka'])){
     if(isset($_SESSION['email'])){
@@ -71,19 +79,31 @@ if(isset($_POST['dodaj_do_koszyka'])){
 
 ?>
 <?php
-echo "<div class='wrapper'>";
-if (isset($_POST['formsub'])) {
+/*echo "<div class='wrapper'>"; */
+if (isset($_POST['formsub']) OR isset($_POST['clickedceny'])) {
+
     if(isset($_POST['reset'])){
         $GatunekSet=True;
     }
-    $gatunek = $_POST["gatunki"];
-    $res1 = mysqli_query($polaczenie, "SELECT title,genre,quantity,price, img_src,id FROM filmy WHERE genre LIKE '$gatunek'");
-    $GatunekSet = false;
+
+    if(!isset($_POST['clickedceny'])) {
+        $gatunek = $_POST["gatunki"];
+        $GatunekSet = false;
+        $zapytaniesortowanie = "SELECT title,genre,quantity,price, img_src,id FROM filmy WHERE genre LIKE '$gatunek'";
+    }
+
+    if(!isset($_POST['formsub'])){
+        $maxcena = $_POST['zakrescen'];
+        $GatunekSet = false;
+        $zapytaniesortowanie = "SELECT title,genre,quantity,price,img_src,id FROM filmy WHERE price BETWEEN 0 and $maxcena";
+
+    }
+    $res1 = mysqli_query($polaczenie, $zapytaniesortowanie);
     while($r=mysqli_fetch_row($res1)) {
         echo "
                 <div class='movies' >
                 <form method='POST' action='index.php'> 
-                <img src='$r[4]'width='200px' height='270px'>
+                <img src='$r[4]'width='200px' height='270px' alt='zdjecie produktu'>
                 <h3>$r[0] <br>
                 $r[1] <br> 
                 Ilośc w magazynie: $r[2] <br>
@@ -100,6 +120,8 @@ if (isset($_POST['formsub'])) {
                  </form>
                  </div>";
     }
+
+
 }
 if($GatunekSet) {
     $res = mysqli_query($polaczenie, "SELECT title, genre, quantity,price, img_src,id FROM filmy");
@@ -107,7 +129,7 @@ if($GatunekSet) {
         echo "
                 <div class='movies' >
                 <form method='POST' action='index.php'> 
-                <img src='$r[4]'width='200px' height='270px'>
+                <img src='$r[4]'width='200px' height='270px' alt='zdjecie produktu'>
                 <h3>$r[0] <br>
                 $r[1] <br> 
                 Ilośc w magazynie: $r[2] <br>
@@ -125,9 +147,9 @@ if($GatunekSet) {
                  </div>";
     }
 }
-echo "</div>";
+/*echo "</div>";*/
 ?>
-
+    </div>
 
 
 </body>

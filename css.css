@@ -8,12 +8,6 @@ body{
 p{
     margin:0.05em;
 }
-.sortowanie_form{
-    display: block;
-    align-content: center;
-    text-align: center;
-    align-items: center;
-}
 .header{
     text-align: center;
     color:black;
@@ -90,15 +84,32 @@ p{
     font-size:20px;
 
 }
-.wrapper{
-    margin: 0 auto;
-    max-width: 95%;
-    padding-right: 16px;
-    padding-left:  16px;
+sortowanie_form{
+    display: block;
+    align-content: center;
+    text-align: center;
+    align-items: center;
+}
+.sortowanie_div{
+    margin:auto;
+    width: 80%;
+    display: block;
+    align-content: center;
+    text-align: center;
+    align-items: center;
+}
+.sortowanie_div form{
+    display: inline-block;
+}
+.content-filmy{
+    margin:auto;
+    justify-content: center;
+    position:relative;
+    width: 80%;
+
 }
 .movies {
     display: inline-block;
-    float: left;
     border: 1px solid black;
     width: 200px;
     height: auto;

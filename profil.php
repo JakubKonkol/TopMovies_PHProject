@@ -35,6 +35,7 @@ if(isset($_POST['zmiendane'])){
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="functions.js"></script>
+
 </head>
 <body>
 <div class="nawigacyjny">
@@ -53,7 +54,7 @@ if(isset($_POST['zmiendane'])){
     <input type="text" class="form-control" id="nowyemail" name="nowyemail" disabled value="<?php echo $profil['email']?>"> <br>
         <button type='button' onclick="Zmiendane()" class="zmiendanebutt"> <i class="fi fi-rr-refresh"></i> Zmień dane</button>
     <input id="zmiendanebutton" type="submit" name="zmiendane" value="Zaaktualizuj dane!" class="zaaktualizujdanebutt" disabled>
-    <input type="submit" name="usunkonto" onclick="return confirm('Czy napewno chcesz usunąć konto? Tej operacji nie można cofnąć')"class="usunkontobutt" value="USUŃ KONTO">
+    <input type="submit" name="usunkonto" onclick="return confirm('Czy napewno chcesz usunąć konto? Tej operacji nie można cofnąć')" class="usunkontobutt" value="USUŃ KONTO">
 
 </form>
 

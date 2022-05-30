@@ -13,12 +13,13 @@ if(isset($_SESSION['email'])){
 <head>
     <link rel="stylesheet" href="koszyk.css">
     <script src="functions.js"> </script>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
 </head>
 <body>
 <div class="nawigacyjny">
-    <a onclick="Wyloguj()"> Wyloguj</a>
-    <a onclick="Profil()"> Profil</a>
-    <p onClick="MainPage()"> Strona Główna </p>
+    <a onclick="Wyloguj()"><i class="fi fi-rr-sign-out-alt"></i> Wyloguj</a>
+    <a onclick="Profil()"> <i class="fi fi-rr-user"></i> Profil</a>
+    <p onClick="MainPage()"><i class="fi fi-rr-home"></i> Strona Główna </p>
 </div>
 <div class="bodykoszyka">
 <table class="koszyktab">

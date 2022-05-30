@@ -43,3 +43,7 @@ function Zmiendane(){
 
 
 }
+function suwakcen(){
+    var x = document.getElementById("zakrescen").value;
+    document.getElementById("zakrescenlabel").innerHTML = x;
+}
