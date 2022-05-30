@@ -35,3 +35,11 @@ function user_istnieje(){
 
 
 }
+function Zmiendane(){
+    document.getElementById("noweimie").disabled=false;
+    document.getElementById("nowenazwisko").disabled=false;
+    document.getElementById("nowyemail").disabled=false;
+    document.getElementById("zmiendanebutton").disabled =false;
+
+
+}

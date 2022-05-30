@@ -9,7 +9,7 @@
 .nawigacyjny a{
     float:right;
     display: block;
-    color: white;
+    color: white !important;
     text-align: center;
     padding: 10px 10px 10px 10px;
     background-color: black;
@@ -55,11 +55,77 @@
 body{
     margin:0;
     background-color: lightcyan;
+
 }
 p{
     margin:0.05em;
 }
 .bodyprofilu{
     margin-top:50px;
+    margin-left: 10px;
+    margin-right: 10px;
 
+
+}
+.formularzzmiany{
+    text-align: center;
+    align-content: center;
+    align-items: center;
+    margin: auto;
+    display: block;
+    width: 500px;
+    height: 310px;
+
+
+}
+.formularzzmiany input[type='text']{
+    margin:auto;
+    width: 400px;
+}
+.formularzzmiany input[type='submit']{
+    margin:auto;
+
+}
+.formularzzmiany button{
+    margin:auto;
+}
+.zmiendanebutt{
+    color:white;
+    background-color: blue;
+    text-decoration: none;
+    border:none;
+    padding: 10px 10px;
+    border-radius: 8px;
+}
+.zmiendanebutt:hover{
+    background-color: darkblue;
+}
+.zaaktualizujdanebutt{
+    color:white;
+    background-color: green;
+    text-decoration: none;
+    border:none;
+    padding: 10px 10px;
+    border-radius: 8px;
+}
+.zaaktualizujdanebutt:disabled{
+    background-color: gray;
+}
+.zaaktualizujdanebutt:disabled:hover{
+    background-color: gray;
+}
+.zaaktualizujdanebutt:hover{
+    background-color: darkgreen;
+}
+.usunkontobutt{
+    color:white;
+    margin-top: 20px;
+    background-color: red;
+    text-decoration: none;
+    border:none;
+    padding: 10px 10px;
+    border-radius: 8px;
+}
+.usunkontobutt:hover{
+    background-color: darkred;
 }

@@ -14,13 +14,14 @@ session_start();
     <link href="https://fonts.googleapis.com/css?family=Cardo:400,700|Oswald" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Archivo:500|Open+Sans:300,700" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <script src="functions.js"> </script>
 </head>
 <body>
 <div class="nawigacyjny">
-    <a onclick="Koszyk()"> Koszyk</a>
-    <a onclick="Profil()"> Profil</a>
-    <p onClick="MainPage()"> Strona Główna </p>
+    <a onclick="Koszyk()"><i class="fi fi-rr-shopping-cart"></i> Koszyk</a>
+    <a onclick="Profil()"><i class="fi fi-rr-user"></i> Profil</a>
+    <p onClick="MainPage()"><i class="fi fi-rr-home"></i> Strona Główna </p>
     <p> O nas </p>
     <p> Dostawa/Płatnośc </p>
     <span id="alert" onclick="powiadomienie('')">  </span>
