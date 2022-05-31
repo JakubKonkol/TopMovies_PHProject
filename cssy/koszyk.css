@@ -1,4 +1,6 @@
 table{
+    width: 1000px;
+    height: auto;
     border: 1px solid black;
 }
 tr{
@@ -100,6 +102,65 @@ p{
     margin:0.05em;
 }
 .bodykoszyka{
+    height: auto;
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
     margin-top:50px;
 
+}
+.dostawaform{
+    margin-left: auto;
+    margin-right: auto;
+    border: 3px solid black;
+    width: 1500px;
+    min-height: 500px;
+}
+.dostawaform form{
+    text-align: center;
+
+}
+.dostawaform h2{
+    text-align: center;
+}
+.dostawaform input{
+    margin-bottom: 10px;
+}
+.sposobdostawy{
+    border: 1px solid black;
+    margin-bottom: 15px;
+    width: 300px ;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sposobdostawy table{
+    margin-top: -10px;
+    color:black;
+    border: none;
+    width: 300px;
+}
+.sposobdostawy tr{
+    color: black;
+    border: none;
+    width: 200px;
+}
+.sposobdostawy th{
+    color: black;
+    border: none;
+    width: 200px;
+    background: none;
+}
+.sposobdostawy td{
+    color: black;
+    border: none;
+    width: 200px;
+}
+.resztadostawy{
+    justify-content: center;
+    display: flex;
+}
+.resztadostawy input{
+    margin-right: 10px;
 }

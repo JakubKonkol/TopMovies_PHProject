@@ -1,11 +1,9 @@
 <?php
 session_start();
-if(isset($_SESSION['email'])){
-
-}else{
+if(!isset($_SESSION['email'])){
     header('Location: zaloguj.php');
 }
-
+$user = $_SESSION['email']['email'];
 
 
 ?>
@@ -14,6 +12,7 @@ if(isset($_SESSION['email'])){
     <link rel="stylesheet" href="cssy/koszyk.css">
     <script src="scripts/functions.js"> </script>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <script src="https://kit.fontawesome.com/a9c3b869ed.js" crossorigin="anonymous"></script>
     <title>Koszyk</title>
 </head>
 <body>
@@ -23,6 +22,7 @@ if(isset($_SESSION['email'])){
     <p onClick="MainPage()"><i class="fi fi-rr-home"></i> Strona Główna </p>
 </div>
 <div class="bodykoszyka">
+    <h2> Koszyk dla <?php echo $user; ?> </h2>
 <table class="koszyktab">
     <thead>
     <th>tytul</th>
@@ -37,6 +37,8 @@ $user = $_SESSION['email']['email'];
 $zapytanie = "SELECT tytul, gatunek, cena FROM cart WHERE user = '$user'";
 $wynik = mysqli_query($polaczenie,$zapytanie);
 $cena_calkowita = 0;
+
+
 while($r=mysqli_fetch_row($wynik)) {
     $cena_calkowita = $cena_calkowita + intval($r[2]);
     echo
@@ -65,6 +67,58 @@ echo "
 "
 ?>
 </div>
+<div class="dostawaform" id="formularzID">
+    <h2> Formularz dostawy </h2>
+    <form action="koszyk.php" method="post">
+        <div class="sposobdostawy">
+            <h3> Sposób dostawy</h3>
+            <table>
+                <tr>
+                    <td><input type="radio" name="sposobdostawy"  value="kurier"></td>
+                    <td><span><i class="fi fi-rr-truck-side"></i> Kurier</span></td>
+                </tr>
+                <tr>
+                   <th> <input type="radio" name="sposobdostawy"  value="paczkomat">  </th>
+                   <th> <span><i class="fi fi-rr-box-alt"></i> Paczkomat</span> </th>
+                </tr>
+                <tr>
+                    <th><input type="radio" name="sposobdostawy"  value="osobisty"></th>
+                    <th> <span><i class="fi fi-rr-package"></i> Odbiór osobisty</span></th>
+                </tr>
+
+            </table>
+        </div>
+        <div class="sposobdostawy">
+            <h3> Metoda Płatności</h3>
+            <table>
+                <tr>
+                    <td><input type="radio" name="metodaplatnosc"  value="karta"></td>
+                    <td><span><i class="fi fi-rr-credit-card"></i> Karta Visa/Mastercard</span></td>
+                </tr>
+                <tr>
+                    <th> <input type="radio" name="metodaplatnosc"  value="paypal">  </th>
+                    <th> <span><i class="fa-brands fa-paypal"></i> PayPal</span> </th>
+                </tr>
+                <tr>
+                    <th><input type="radio" name="metodaplatnosc"  value="applepay"></th>
+                    <th> <span><i class="fab fa-apple-pay"></i> Apple Pay</span></th>
+                </tr>
+
+            </table>
+        </div>
+        <div class="resztadostawy">
+            <span>Imie:</span><input type="text" name="imie">  <br>
+            <span>Nazwisko:</span><input type="text" name="nazwisko"> <br>
+            <span>Adres e-mail:</span><input type="text" name="email" value="<?php echo $user;  ?>" disabled> <br>
+            <span>numer telefonu:</span> <input type="text"  name="telefon"> <br>
+        </div>
+        <input type="hidden" name="calkowitacena" value="<?php echo $cena_calkowita?>">
+        <input id="formularzdostawy" name="zlozzamowienie" type="submit" value="Złóż zamówienie!">
+    </form>
+
+
+
+</div>
 <?php
 if (isset($_POST['usun_z_koszyka'])){
     $tytul = $_POST['tytul'];
@@ -74,6 +128,26 @@ if (isset($_POST['usun_z_koszyka'])){
     $polaczenie->query($usuwanie_sql);
     header('Location: koszyk.php');
 }
+if(mysqli_num_rows($wynik) <= 0){
+    echo  "<script> ZablokujFormularzDostawy(); </script>";
+}
+if(isset($_POST['zlozzamowienie'])){
+    include "MakeOrder.php";
+    $sposob_dostawy = $_POST['sposobdostawy'];
+    $metoda_platnosci = $_POST['metodaplatnosc'];
+    $imie = $_POST['imie'];
+    $nazwisko = $_POST['nazwisko'];
+    $email = $user;
+    $nrtel = $_POST['telefon'];
+    $koszt_zamowienia = $_POST['calkowitacena'];
+
+    $makeorder = new MakeOrder($sposob_dostawy, $metoda_platnosci, $imie, $nazwisko, $email, $nrtel, $koszt_zamowienia);
+    $makeorder->Zamow();
+
+}
+
+
+
 ?>
 
 </body>

@@ -53,3 +53,6 @@ function suwakcen(){
     var x = document.getElementById("zakrescen").value;
     document.getElementById("zakrescenlabel").innerHTML = x;
 }
+function ZablokujFormularzDostawy(){
+    document.getElementById("formularzID").style.visibility = 'hidden';
+}
