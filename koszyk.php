@@ -74,15 +74,15 @@ echo "
             <h3> Sposób dostawy</h3>
             <table>
                 <tr>
-                    <td><input type="radio" name="sposobdostawy"  value="kurier"></td>
+                    <td><input type="radio" name="sposobdostawy" required value="kurier"></td>
                     <td><span><i class="fi fi-rr-truck-side"></i> Kurier</span></td>
                 </tr>
                 <tr>
-                   <th> <input type="radio" name="sposobdostawy"  value="paczkomat">  </th>
+                   <th> <input type="radio" name="sposobdostawy" required value="paczkomat">  </th>
                    <th> <span><i class="fi fi-rr-box-alt"></i> Paczkomat</span> </th>
                 </tr>
                 <tr>
-                    <th><input type="radio" name="sposobdostawy"  value="osobisty"></th>
+                    <th><input type="radio" name="sposobdostawy" required value="osobisty"></th>
                     <th> <span><i class="fi fi-rr-package"></i> Odbiór osobisty</span></th>
                 </tr>
 
@@ -92,25 +92,31 @@ echo "
             <h3> Metoda Płatności</h3>
             <table>
                 <tr>
-                    <td><input type="radio" name="metodaplatnosc"  value="karta"></td>
+                    <td><input type="radio" name="metodaplatnosc" required value="karta"></td>
                     <td><span><i class="fi fi-rr-credit-card"></i> Karta Visa/Mastercard</span></td>
                 </tr>
                 <tr>
-                    <th> <input type="radio" name="metodaplatnosc"  value="paypal">  </th>
+                    <th> <input type="radio" name="metodaplatnosc" required value="paypal">  </th>
                     <th> <span><i class="fa-brands fa-paypal"></i> PayPal</span> </th>
                 </tr>
                 <tr>
-                    <th><input type="radio" name="metodaplatnosc"  value="applepay"></th>
+                    <th><input type="radio" name="metodaplatnosc" required value="applepay"></th>
                     <th> <span><i class="fab fa-apple-pay"></i> Apple Pay</span></th>
                 </tr>
 
             </table>
         </div>
         <div class="resztadostawy">
-            <span>Imie:</span><input type="text" name="imie">  <br>
-            <span>Nazwisko:</span><input type="text" name="nazwisko"> <br>
-            <span>Adres e-mail:</span><input type="text" name="email" value="<?php echo $user;  ?>" disabled> <br>
-            <span>numer telefonu:</span> <input type="text"  name="telefon"> <br>
+            <span>Imie:</span><input type="text" required name="imie">  <br>
+            <span>Nazwisko:</span><input type="text" required name="nazwisko"> <br>
+            <span>Adres e-mail:</span><input type="text" required name="email" value="<?php echo $user;  ?>" disabled> <br>
+            <span>numer telefonu:</span> <input type="text" required name="telefon"> <br>
+        </div>
+        <div class="resztadostawy">
+            <span>Ulica:</span><input type="text" required name="ulica">  <br>
+            <span>Numer domu/mieszkanie:</span><input type="text" required name="nrdomu"> <br>
+            <span>Miasto:</span><input type="text" required name="miasto"> <br>
+            <span>Kod pocztowy:</span> <input type="text" required name="kodpocztowy"> <br>
         </div>
         <input type="hidden" name="calkowitacena" value="<?php echo $cena_calkowita?>">
         <input id="formularzdostawy" name="zlozzamowienie" type="submit" value="Złóż zamówienie!">
@@ -140,8 +146,12 @@ if(isset($_POST['zlozzamowienie'])){
     $email = $user;
     $nrtel = $_POST['telefon'];
     $koszt_zamowienia = $_POST['calkowitacena'];
+    $ulica = $_POST['ulica'];
+    $nrdomu = $_POST['nrdomu'];
+    $miasto = $_POST['miasto'];
+    $postcode = $_POST['kodpocztowy'];
 
-    $makeorder = new MakeOrder($sposob_dostawy, $metoda_platnosci, $imie, $nazwisko, $email, $nrtel, $koszt_zamowienia);
+    $makeorder = new MakeOrder($sposob_dostawy, $metoda_platnosci, $imie, $nazwisko, $email, $nrtel, $koszt_zamowienia,$ulica,$nrdomu,$miasto,$postcode);
     $makeorder->Zamow();
 
 }

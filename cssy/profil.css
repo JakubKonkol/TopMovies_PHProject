@@ -129,3 +129,25 @@ p{
 .usunkontobutt:hover{
     background-color: darkred;
 }
+.historiazamowien h2{
+    text-align: center;
+}
+.historiazamowien{
+    margin-left:auto;
+    margin-right: auto;
+    width: 80%;
+    min-height: 200px;
+    border: 3px solid black;
+}
+.historiazamowien table{
+    border:1px solid black;
+}
+.historiazamowien th{
+    border:1px solid black;
+}
+.historiazamowien tr{
+    border:1px solid black;
+}
+.historiazamowien td{
+    border:1px solid black;
+}

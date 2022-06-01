@@ -17,8 +17,12 @@ if(isset($_POST['zmiendane'])){
 
     $zmianasql = " UPDATE users SET imie='$noweimie', nazwisko='$nowenazwisko', email='$nowymail' WHERE email='$obecnymail'";
     $zmianacart = "UPDATE cart SET user = '$nowymail' WHERE user='$obecnymail'";
+    $zmianaopinie = "UPDATE opinie SET user_email = $nowymail WHERE user_email = $obecnymail";
+    $zmianaorders = "UPDATE orders SET email = $nowymail WHERE email = $obecnymail";
     $polaczenie->query($zmianasql);
     $polaczenie->query($zmianacart);
+    $polaczenie->query($zmianaopinie);
+    $polaczenie->query($zmianaorders);
     header("Location: logowanie.php");
 
 }
@@ -57,7 +61,39 @@ if(isset($_POST['zmiendane'])){
     <input type="submit" name="usunkonto" onclick="return confirm('Czy napewno chcesz usunąć konto? Tej operacji nie można cofnąć')" class="usunkontobutt" value="USUŃ KONTO">
 
 </form>
-
+<?php
+$zapytaniezamowienia = "SELECT id_zamowienia, sposob_dostawy, metoda_platnosci, koszt_zamowienia FROM orders WHERE email='$email'";
+$zamowienieselect = mysqli_query($polaczenie, $zapytaniezamowienia);
+?>
+</div>
+<div class="historiazamowien">
+    <h2> Historia zamówień</h2>
+    <table class="table">
+        <thead>
+            <tr>
+            <th scope = "col" > ID ZAMÓWIENIA </th >
+            <th scope = "col" > Metoda Płatności </th >
+            <th scope = "col" > Sposób dostawy </th >
+            <th scope = "col" > koszt zamówienia </th >
+        </tr>
+        </thead>
+        <tbody>
+        <?php
+        if(mysqli_num_rows($zamowienieselect)>0){
+            while($zamowienie = mysqli_fetch_assoc($zamowienieselect)) {
+                echo"
+                <tr>
+            <th scope = 'row' >$zamowienie[id_zamowienia] </th >
+            <td > $zamowienie[metoda_platnosci]</td >
+            <td > $zamowienie[sposob_dostawy]</td >
+            <td > $zamowienie[koszt_zamowienia]</td >
+        </tr >
+        ";
+                }
+}
+?>
+        </tbody>
+    </table>
 </div>
 
 </body>
