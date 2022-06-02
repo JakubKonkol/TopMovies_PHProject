@@ -62,7 +62,7 @@ if(isset($_POST['zmiendane'])){
 
 </form>
 <?php
-$zapytaniezamowienia = "SELECT id_zamowienia, sposob_dostawy, metoda_platnosci, koszt_zamowienia FROM orders WHERE email='$email'";
+$zapytaniezamowienia = "SELECT id_zamowienia, sposob_dostawy, metoda_platnosci, koszt_zamowienia, data_zamowienia FROM orders WHERE email='$email'";
 $zamowienieselect = mysqli_query($polaczenie, $zapytaniezamowienia);
 ?>
 </div>
@@ -75,6 +75,7 @@ $zamowienieselect = mysqli_query($polaczenie, $zapytaniezamowienia);
             <th scope = "col" > Metoda Płatności </th >
             <th scope = "col" > Sposób dostawy </th >
             <th scope = "col" > koszt zamówienia </th >
+            <th scope = "col" > Data zamówienia </th >
         </tr>
         </thead>
         <tbody>
@@ -87,6 +88,7 @@ $zamowienieselect = mysqli_query($polaczenie, $zapytaniezamowienia);
             <td > $zamowienie[metoda_platnosci]</td >
             <td > $zamowienie[sposob_dostawy]</td >
             <td > $zamowienie[koszt_zamowienia]</td >
+            <td > $zamowienie[data_zamowienia]</td >
         </tr >
         ";
                 }
