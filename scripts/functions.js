@@ -19,6 +19,9 @@ function Onas(){
 function Dostawa(){
     window.location.href="dostawa.html";
 }
+function Admin(){
+    window.location.href="AdminPanel.php";
+}
 function sprawdz_haslo(){
     if(document.getElementById("haslo").value == document.getElementById("phaslo").value){
         document.getElementById("warning").style.color = 'green';

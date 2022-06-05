@@ -43,7 +43,9 @@ if(isset($_POST['zmiendane'])){
 </head>
 <body>
 <div class="nawigacyjny">
+
     <a onclick="Wyloguj()"> <i class="fi fi-rr-sign-out-alt"></i> Wyloguj</a>
+    <a onclick="Admin()"><i class="fi fi-rr-settings"></i></i> Admin</a>
     <a onclick="Koszyk()"><i class="fi fi-rr-shopping-cart"></i> Koszyk</a>
     <p onClick="MainPage()"> <i class="fi fi-rr-home"></i> Strona Główna </p>
     <span id="alert" onclick="powiadomienie('')">  </span>

@@ -22,7 +22,6 @@ session_start();
 </head>
 <body>
 <div class="nawigacyjny">
-
     <a onclick="Koszyk()"><i class="fi fi-rr-shopping-cart"></i> Koszyk</a>
     <a onclick="Profil()"><i class="fi fi-rr-user"></i> Profil</a>
     <p onClick="MainPage()"><i class="fi fi-rr-home"></i> Strona Główna </p>
