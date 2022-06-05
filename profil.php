@@ -17,8 +17,8 @@ if(isset($_POST['zmiendane'])){
 
     $zmianasql = " UPDATE users SET imie='$noweimie', nazwisko='$nowenazwisko', email='$nowymail' WHERE email='$obecnymail'";
     $zmianacart = "UPDATE cart SET user = '$nowymail' WHERE user='$obecnymail'";
-    $zmianaopinie = "UPDATE opinie SET user_email = $nowymail WHERE user_email = $obecnymail";
-    $zmianaorders = "UPDATE orders SET email = $nowymail WHERE email = $obecnymail";
+    $zmianaopinie = "UPDATE opinie SET user_email = '$nowymail' WHERE user_email = '$obecnymail'";
+    $zmianaorders = "UPDATE orders SET email = '$nowymail' WHERE email = '$obecnymail'";
     $polaczenie->query($zmianasql);
     $polaczenie->query($zmianacart);
     $polaczenie->query($zmianaopinie);
