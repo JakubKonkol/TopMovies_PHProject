@@ -38,7 +38,7 @@ Class MakeOrder{
     }
 
     public function Zamow(): void{
-        $polaczenie = mysqli_connect("127.0.0.1", "root", "", "TopMovies");
+        require "dbconnect.php";
         $zapytanie = "INSERT INTO orders (sposob_dostawy, metoda_platnosci, imie, nazwisko, email, nr_tel, koszt_zamowienia, data_zamowienia, ulica, nrdomu, miasto, kodpocztowy) VALUES ('$this->sposob_dostawy', '$this->metoda_platnosci', '$this->imie', '$this->nazwisko','$this->email','$this->nrtel','$this->koszt_zamowienia',CURDATE(),'$this->ulica','$this->nrdomu','$this->miasto','$this->postcode')";
         $polaczenie->query($zapytanie);
     }

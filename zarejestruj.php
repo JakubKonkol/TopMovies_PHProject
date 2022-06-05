@@ -1,6 +1,6 @@
 <?php
 session_start();
-$polaczenie = mysqli_connect("127.0.0.1", "root", "", "TopMovies");
+require "dbconnect.php";
 if(isset($_POST['ClickZarejestruj'])){
     $imie = mysqli_real_escape_string($polaczenie, $_POST['imie']);
     $nazwisko = mysqli_real_escape_string($polaczenie, $_POST['nazwisko']);

@@ -3,7 +3,7 @@ session_start();
 if(!isset($_SESSION['email'])){
     header("Location: logowanie.php");
 }
-$polaczenie = mysqli_connect("127.0.0.1", "root", "", "TopMovies");
+require "dbconnect.php";
 $email = $_SESSION['email']['email'];
 $wybieranieuserasql = "SELECT id,imie,nazwisko,email,isadmin from users WHERE email= '$email'";
 $wynik = mysqli_query($polaczenie, $wybieranieuserasql);

@@ -18,7 +18,7 @@ class Dodawanie_opini{
 
     public function dodajopinie(): void
     {
-        $polaczenie = mysqli_connect("127.0.0.1", "root", "", "TopMovies");
+        require "../dbconnect.php";
         $zapytanie = "INSERT INTO opinie (user_email, opinia, id_filmu) VALUES ('$this->email','$this->opinia','$this->idfilmu' )";
         $polaczenie->query($zapytanie);
     }

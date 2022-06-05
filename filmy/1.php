@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$polaczenie = mysqli_connect("127.0.0.1", "root", "", "TopMovies");
+require "../dbconnect.php";
 $idfilmu = basename(__FILE__, '.php');
 $zapytanie = "SELECT * FROM filmy where id = '$idfilmu'";
 $wynik = mysqli_query($polaczenie, $zapytanie);
@@ -61,7 +61,7 @@ if(isset($_POST['dodanaopinia']) && $_POST['random'] == $_SESSION['rand']){
 
     </div>
     <div class="dodajopinie">
-        <form action="1.php" method="post" name="dodawanieopini" id="dodawanieopini">
+        <form action="<?php echo "$idfilmu.php";?>" method="post" name="dodawanieopini" id="dodawanieopini">
             <?php
             $rand=rand();
             $_SESSION['rand']=$rand; ?>

@@ -1,5 +1,6 @@
 <?php
-$polaczenie = mysqli_connect("127.0.0.1", "root", "", "TopMovies");
+//$polaczenie = mysqli_connect("127.0.0.1", "root", "", "TopMovies");
+require "dbconnect.php";
 $GatunekSet=true;
 session_start();
 

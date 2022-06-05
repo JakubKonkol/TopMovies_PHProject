@@ -1,6 +1,6 @@
 <?php
 session_start();
-$polaczenie = mysqli_connect("127.0.0.1", "root", "", "TopMovies");
+require "dbconnect.php";
 if(isset($_POST['ClickZaloguj'])){
     $email = mysqli_real_escape_string($polaczenie, $_POST['email']);
     $password = mysqli_real_escape_string($polaczenie, md5($_POST['password']));
