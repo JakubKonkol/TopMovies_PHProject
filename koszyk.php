@@ -1,11 +1,19 @@
 <?php
 session_start();
+$polaczenie = mysqli_connect("127.0.0.1", "root", "", "TopMovies");
 if(!isset($_SESSION['email'])){
     header('Location: zaloguj.php');
 }
 $user = $_SESSION['email']['email'];
 
-
+if (isset($_POST['usun_z_koszyka'])){
+    $tytul = $_POST['tytul'];
+    $gatunek = $_POST['gatunek'];
+    $cena = $_POST['cena'];
+    $usuwanie_sql = "DELETE from cart WHERE tytul = '$tytul' AND gatunek = '$gatunek' AND cena = '$cena' AND user='$user'";
+    $polaczenie->query($usuwanie_sql);
+    header('Location: koszyk.php');
+}
 ?>
 <html lang="pl">
 <head>
@@ -32,7 +40,6 @@ $user = $_SESSION['email']['email'];
     </thead>
     <tbody>
 <?php
-$polaczenie = mysqli_connect("127.0.0.1", "root", "", "TopMovies");
 $user = $_SESSION['email']['email'];
 $zapytanie = "SELECT tytul, gatunek, cena FROM cart WHERE user = '$user'";
 $wynik = mysqli_query($polaczenie,$zapytanie);
@@ -64,7 +71,7 @@ echo "
 </tr>
 </tbody>
 </table>
-"
+";
 ?>
 </div>
 <div class="dostawaform" id="formularzID">
@@ -118,7 +125,7 @@ echo "
             <span>Miasto:</span><input type="text" required name="miasto"> <br>
             <span>Kod pocztowy:</span> <input type="text" required name="kodpocztowy"> <br>
         </div>
-        <input type="hidden" name="calkowitacena" value="<?php echo $cena_calkowita?>">
+        <input type="hidden" name="calkowitacena" value="<?php echo $cena_calkowita;?>">
         <input id="formularzdostawy" name="zlozzamowienie" type="submit" value="Złóż zamówienie!">
     </form>
 
@@ -126,14 +133,7 @@ echo "
 
 </div>
 <?php
-if (isset($_POST['usun_z_koszyka'])){
-    $tytul = $_POST['tytul'];
-    $gatunek = $_POST['gatunek'];
-    $cena = $_POST['cena'];
-    $usuwanie_sql = "DELETE from cart WHERE tytul = '$tytul' AND gatunek = '$gatunek' AND cena = '$cena' AND user='$user'";
-    $polaczenie->query($usuwanie_sql);
-    header('Location: koszyk.php');
-}
+
 if(mysqli_num_rows($wynik) <= 0){
     echo  "<script> ZablokujFormularzDostawy(); </script>";
 }
