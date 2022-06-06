@@ -8,8 +8,7 @@ session_start();
 <html lang="PL">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title> TopMovies</title>
     <link rel="stylesheet" href="cssy/css.css">
@@ -40,7 +39,8 @@ session_start();
             </ul>
         </div>
         <span class="napisfilmy">Filmy</span></div> <br> <br> <br>
-    <div class="sortowanie_div">
+    <div class="sortowanie_div1" id="pokazsortowanie"><button onclick="Sortujpokaz()"> <span> Sortuj filmy</span> </button></div>
+    <div class="sortowanie_div" id="sortowanie">
     <form action="index.php" method="POST" class="sortowanie_form">
         <label for="gatunki">Wybierz gatunek:</label>
         <select id="gatunki" name="gatunki">
@@ -153,7 +153,10 @@ if($GatunekSet) {
 }
 ?>
     </div>
+<footer>
 
+    essa
+</footer>
 
 </body>
 

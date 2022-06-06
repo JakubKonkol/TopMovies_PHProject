@@ -59,3 +59,7 @@ function suwakcen(){
 function ZablokujFormularzDostawy(){
     document.getElementById("formularzID").style.visibility = 'hidden';
 }
+function Sortujpokaz(){
+    document.getElementById("sortowanie").style.visibility = "visible";
+    document.getElementById("pokazsortowanie").parentNode.removeChild(document.getElementById("pokazsortowanie"));
+}

@@ -1,8 +1,6 @@
 body{
     margin:0;
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-    background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
+    background-image: url("../assets/bg2.jpg");
     height: 100vh;
 }
 p{
@@ -22,6 +20,15 @@ p{
     text-align: center;
     color:black;
     font-size:100px;
+    width: auto;
+
+}
+@media only screen and (max-width: 1000px) {
+
+    .title_text {
+        font-size: 50px;
+        margin-top: 40px;
+    }
 
 }
 .nawigacyjny{
@@ -92,13 +99,59 @@ sortowanie_form{
     text-align: center;
     align-items: center;
 }
-.sortowanie_div{
+.sortowanie_div1{
     margin:auto;
     width: 80%;
     display: block;
     align-content: center;
     text-align: center;
     align-items: center;
+    color:white
+}
+.sortowanie_div1 button{
+    border-radius: 4px;
+    background-color: blue;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 18px;
+    padding: 2px;
+    width: 160px;
+
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+.sortowanie_div1 button span{
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+.sortowanie_div1 button span:after{
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+.sortowanie_div1 button:hover span {
+    padding-right: 25px;
+}
+.sortowanie_div1 button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+.sortowanie_div{
+    visibility: hidden;
+    margin:auto;
+    width: 80%;
+    display: block;
+    align-content: center;
+    text-align: center;
+    align-items: center;
+    color:white
 }
 .sortowanie_div form{
     display: inline-block;
@@ -126,7 +179,8 @@ sortowanie_form{
     margin-right: 10px;
     margin-bottom: 10px;
     text-align: center;
-    background-color: lightcyan;
+    background-color: #191919;
+    color:white;
 }
 .movies form input{
     margin-top:-5px;

@@ -24,10 +24,12 @@
     justify-content: flex-end;
     height: 3rem;
     list-style: none;
+    text-shadow: 2px 2px #191919;
 }
 .napisfilmy{
     font-weight: bolder;
-    color:black;
+    color:white;
+    text-shadow: 2px 2px #191919;
 }
 @keyframes scrollUp {
     15%, 25% {
