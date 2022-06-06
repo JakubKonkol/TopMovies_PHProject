@@ -104,10 +104,17 @@ sortowanie_form{
     display: inline-block;
 }
 .content-filmy{
+    display: flex;
+    flex-wrap: wrap;
+    min-width: 350px;
+    flex-basis: 25%;
     margin:auto;
     justify-content: center;
     position:relative;
     width: 80%;
+    padding-left: 25px;
+    padding-right: 25px;
+
 
 }
 .movies {

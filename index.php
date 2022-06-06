@@ -72,6 +72,7 @@ if(isset($_POST['dodaj_do_koszyka'])){
         $mail = $_SESSION['email']['email'];
         $do_koszyka_sql = "INSERT INTO cart (tytul, gatunek, cena, user) VALUES ('$tytul', '$gatunek', '$cena','$mail')";
         $polaczenie->query($do_koszyka_sql);
+        header("Location: index.php");
     }else{
         echo "<script> powiadomienie('Musisz być zalogowany'); </script>";
     }
