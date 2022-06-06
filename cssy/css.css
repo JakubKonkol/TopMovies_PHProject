@@ -188,7 +188,7 @@ sortowanie_form{
     position:relative;
     margin-bottom: 0;
 }
-.movies:hover .overlay{
+.movies:hover .overlay, movies:active .overlay{
     opacity: 1;
 }
 .movies .overlay{
