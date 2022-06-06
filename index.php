@@ -17,6 +17,8 @@ session_start();
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Archivo:500|Open+Sans:300,700" rel="stylesheet">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <script src="https://kit.fontawesome.com/a9c3b869ed.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="cssy/footer.css">
     <script src="scripts/functions.js"> </script>
 </head>
 <body>
@@ -105,23 +107,28 @@ if (isset($_POST['formsub']) OR isset($_POST['clickedceny'])) {
     $res1 = mysqli_query($polaczenie, $zapytaniesortowanie);
     while($r=mysqli_fetch_assoc($res1)) {
         echo "
-                <div class='movies' >
-                <form method='POST' action='index.php'> 
-                <img src='$r[img_src]'width='200px' height='270px' alt='zdjecie produktu'>
-                <h3>$r[title] <br>
-                $r[genre] <br> 
-                Ilośc w magazynie: $r[quantity] <br>
-                 Cena: $r[price] PLN<br></h3>
-                 <input type='hidden' value='$r[title]' name='tytul'> 
-                 <input type='hidden' value='$r[genre]' name='gatunek'>
-                 <input type='hidden' value='$r[price]' name='cena'>
+                <div class='movies'>
+                    
+                    <img src='$r[img_src]' alt='zdjecie produktu'>
+                
+                  <div class='overlay'>
+                    <h3>$r[title] <br>
+                    $r[genre] <br> 
+                    Ilośc w magazynie: $r[quantity] <br>
+                    Cena: $r[price] PLN<br></h3>
+                    
+                    <form method='POST' action='index.php'> 
+                    <input type='hidden' value='$r[title]' name='tytul'> 
+                    <input type='hidden' value='$r[genre]' name='gatunek'>
+                    <input type='hidden' value='$r[price]' name='cena'>
                  
-                 <input class='dodaj_do_koszyka_butt' type='submit' value='Do koszyka!' name='dodaj_do_koszyka'>
-                 </form>
-                 <form action='filmy/szczegoly.php?id=$r[id]' method='post'>
-                  <input type='hidden' value='$r[id]' name='nazwastr'>  
-                 <input type='submit' class='szczegolybutt' name='szczegoly' value='szczegoly'>
-                 </form>
+                    <input class='dodaj_do_koszyka_butt' type='submit' value='Do koszyka!' name='dodaj_do_koszyka'>
+                    </form>
+                    <form action='filmy/szczegoly.php?id=$r[id]' method='post'>
+                    <input type='hidden' value='$r[id]' name='nazwastr'>  
+                    <input type='submit' class='szczegolybutt' name='szczegoly' value='szczegoly'>
+                    </form>
+                    </div>
                  </div>";
     }
 
@@ -131,31 +138,36 @@ if($GatunekSet) {
     $res = mysqli_query($polaczenie, "SELECT title, genre, quantity,price, img_src,id FROM filmy");
     while ($r = mysqli_fetch_assoc($res)) {
         echo "
-                <div class='movies' >
-                <form method='POST' action='index.php'> 
-                <img src='$r[img_src]'width='200px' height='270px' alt='zdjecie produktu'>
-                <h3>$r[title] <br>
-                $r[genre] <br> 
-                Ilośc w magazynie: $r[quantity] <br>
-                 Cena: $r[price] PLN<br></h3>
-                 <input type='hidden' value='$r[title]' name='tytul'> 
-                 <input type='hidden' value='$r[genre]' name='gatunek'>
-                 <input type='hidden' value='$r[price]' name='cena'>
+                <div class='movies'>
+                    
+                    <img src='$r[img_src]' alt='zdjecie produktu'>
+                
+                  <div class='overlay'>
+                    <h3>$r[title] <br>
+                    $r[genre] <br> 
+                    Ilośc w magazynie: $r[quantity] <br>
+                    Cena: $r[price] PLN<br></h3>
+                    
+                    <form method='POST' action='index.php'> 
+                    <input type='hidden' value='$r[title]' name='tytul'> 
+                    <input type='hidden' value='$r[genre]' name='gatunek'>
+                    <input type='hidden' value='$r[price]' name='cena'>
                  
-                 <input class='dodaj_do_koszyka_butt' type='submit' value='Do koszyka!' name='dodaj_do_koszyka'>
-                 </form>
-                 <form action='filmy/szczegoly.php?id=$r[id]' method='post'>
-                 <input type='hidden' value='$r[id]' name='nazwastr'>  
-                 <input type='submit' class='szczegolybutt' name='szczegoly' value='szczegoly'>
-                 </form>
+                    <input class='dodaj_do_koszyka_butt' type='submit' value='Do koszyka!' name='dodaj_do_koszyka'>
+                    </form>
+                    <form action='filmy/szczegoly.php?id=$r[id]' method='post'>
+                    <input type='hidden' value='$r[id]' name='nazwastr'>  
+                    <input type='submit' class='szczegolybutt' name='szczegoly' value='szczegoly'>
+                    </form>
+                    </div>
                  </div>";
     }
 }
 ?>
     </div>
 <footer>
+        <p> Strona powstała jako projekt programistyczny na warsztaty programistyczne. To nie jest prawdziwy sklep z filmami. Jakub Konkol S24406 &copy;2022 <a href="https://github.com/JakubKonkol"> Github </p>
 
-    essa
 </footer>
 
 </body>

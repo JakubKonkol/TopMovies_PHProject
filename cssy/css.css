@@ -174,7 +174,7 @@ sortowanie_form{
     display: inline-block;
     border: 1px solid black;
     width: 200px;
-    height: auto;
+    height: 270px;
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 10px;
@@ -182,10 +182,37 @@ sortowanie_form{
     background-color: #191919;
     color:white;
 }
+.movies img{
+    width: 200px;
+    height: 270px;
+    position:relative;
+    margin-bottom: 0;
+}
+.movies:hover .overlay{
+    opacity: 1;
+}
+.movies .overlay{
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    margin: auto;
+    height: 270px;
+    width: 200px;
+    position: relative;
+    top:-270px;
+    right: 0px;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: gray;
+
+}
+
 .movies form input{
+
     margin-top:-5px;
     margin-bottom: -5px;
 }
+
 .dodaj_do_koszyka_butt{
     font-family: Quicksand;
     height: 30px;
