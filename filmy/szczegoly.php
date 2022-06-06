@@ -2,20 +2,21 @@
 session_start();
 
 require "../dbconnect.php";
-$idfilmu = basename(__FILE__, '.php');
+$idfilmu = $_GET['id'];
 $zapytanie = "SELECT * FROM filmy where id = '$idfilmu'";
 $wynik = mysqli_query($polaczenie, $zapytanie);
 $film = mysqli_fetch_assoc($wynik);
 
 if(isset($_POST['dodanaopinia']) && $_POST['random'] == $_SESSION['rand']){
     if(isset($_SESSION['email'])){
-
         include "Dodawanie_opini.php";
         $email = $_SESSION['email']['email'];
         $opinia =$_POST['opinia'];
         $opinia = new Dodawanie_opini($email, $opinia, $idfilmu);
         $opinia->dodajopinie();
         unset($_POST['dodanaopinia']);
+    }else{
+        echo "<script src='navbar.js'> powiadomienie('Musisz być zalogowany'); </script>";
     }
 }
 
@@ -60,7 +61,7 @@ if(isset($_POST['dodanaopinia']) && $_POST['random'] == $_SESSION['rand']){
 
     </div>
     <div class="dodajopinie">
-        <form action="<?php echo "$idfilmu.php";?>" method="post" name="dodawanieopini" id="dodawanieopini">
+        <form action="<?php echo "szczegoly.php?id=$idfilmu";?>" method="post" name="dodawanieopini" id="dodawanieopini">
             <?php
             $rand=rand();
             $_SESSION['rand']=$rand; ?>
@@ -73,15 +74,15 @@ if(isset($_POST['dodanaopinia']) && $_POST['random'] == $_SESSION['rand']){
 
     <div class="opinie" name="opinieuzytkownikow">
         <h2> Opinie użytkowników </h2>
-        <?php
-        $select_opini = "SELECT user_email, opinia FROM opinie WHERE id_filmu='$idfilmu'";
-        $wynik_select = mysqli_query($polaczenie, $select_opini);
-        if(mysqli_num_rows($wynik_select)<=0){
-            echo "<h3> Nie ma opini dla tego produktu </h3>";
-        }else{
+    <?php
+    $select_opini = "SELECT user_email, opinia FROM opinie WHERE id_filmu='$idfilmu'";
+    $wynik_select = mysqli_query($polaczenie, $select_opini);
+    if(mysqli_num_rows($wynik_select)<=0){
+        echo "<h3> Nie ma opini dla tego produktu </h3>";
+    }else{
 
-            while($r=mysqli_fetch_assoc($wynik_select)) {
-                echo "
+    while($r=mysqli_fetch_assoc($wynik_select)) {
+        echo "
         <div class='pojedynczaopinia'>
         <table> 
             <tr>
@@ -94,11 +95,11 @@ if(isset($_POST['dodanaopinia']) && $_POST['random'] == $_SESSION['rand']){
         </div>
         ";
 
-            }
+    }
 
-        }
+    }
 
-        ?>
+    ?>
 
 
     </div>

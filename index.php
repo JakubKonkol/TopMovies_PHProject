@@ -118,7 +118,7 @@ if (isset($_POST['formsub']) OR isset($_POST['clickedceny'])) {
                  
                  <input class='dodaj_do_koszyka_butt' type='submit' value='Do koszyka!' name='dodaj_do_koszyka'>
                  </form>
-                 <form action='filmy/$r[id].php' method='post'>
+                 <form action='filmy/szczegoly.php?id=$r[id]' method='post'>
                   <input type='hidden' value='$r[id]' name='nazwastr'>  
                  <input type='submit' class='szczegolybutt' name='szczegoly' value='szczegoly'>
                  </form>
@@ -144,7 +144,7 @@ if($GatunekSet) {
                  
                  <input class='dodaj_do_koszyka_butt' type='submit' value='Do koszyka!' name='dodaj_do_koszyka'>
                  </form>
-                 <form action='filmy/$r[id].php' method='post'>
+                 <form action='filmy/szczegoly.php?id=$r[id]' method='post'>
                  <input type='hidden' value='$r[id]' name='nazwastr'>  
                  <input type='submit' class='szczegolybutt' name='szczegoly' value='szczegoly'>
                  </form>
