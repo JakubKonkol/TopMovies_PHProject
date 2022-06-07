@@ -4,7 +4,7 @@ if(!isset($_SESSION['email'])){
     header("Location: logowanie.php");
 }
 require "dbconnect.php";
-$email = $_SESSION['email']['email'];
+$email = $_SESSION['email'];
 $wybieranieuserasql = "SELECT id,imie,nazwisko,email,isadmin from users WHERE email= '$email'";
 $wynik = mysqli_query($polaczenie, $wybieranieuserasql);
 $profil = mysqli_fetch_assoc($wynik);
@@ -13,7 +13,7 @@ if(isset($_POST['zmiendane'])){
     $noweimie = $_POST['noweimie'];
     $nowenazwisko = $_POST['nowenazwisko'];
     $nowymail = $_POST['nowyemail'];
-    $obecnymail = $_SESSION['email']['email'];
+    $obecnymail = $_SESSION['email'];
 
     $zmianasql = " UPDATE users SET imie='$noweimie', nazwisko='$nowenazwisko', email='$nowymail' WHERE email='$obecnymail'";
     $zmianacart = "UPDATE cart SET user = '$nowymail' WHERE user='$obecnymail'";

@@ -7,7 +7,7 @@ if(isset($_POST['ClickZaloguj'])){
     $zapytanie = mysqli_query($polaczenie, "SELECT email FROM users WHERE email='$email' AND password = '$password'");
     if(mysqli_num_rows($zapytanie) > 0){
         $r = mysqli_fetch_assoc($zapytanie);
-        $_SESSION['email'] =$r;
+        $_SESSION['email'] =$r['email'];
         header("Location: koszyk.php");
     }else{
         echo "Nie ma takiego użytkownika!";

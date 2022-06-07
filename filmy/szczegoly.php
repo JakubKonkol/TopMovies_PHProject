@@ -29,7 +29,7 @@ if(isset($_POST['dodanaopinia']) && $_POST['random'] == $_SESSION['rand']){
     <link rel="stylesheet" href="../cssy/szczegoly.css">
     <script src="navbar.js"> </script>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">

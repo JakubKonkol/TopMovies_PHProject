@@ -71,7 +71,7 @@ if(isset($_POST['dodaj_do_koszyka'])){
         $tytul = $_POST["tytul"];
         $gatunek = $_POST["gatunek"];
         $cena = $_POST["cena"];
-        $mail = $_SESSION['email']['email'];
+        $mail = $_SESSION['email'];
         $do_koszyka_sql = "INSERT INTO cart (tytul, gatunek, cena, user) VALUES ('$tytul', '$gatunek', '$cena','$mail')";
         $polaczenie->query($do_koszyka_sql);
         header("Location: index.php");

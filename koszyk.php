@@ -4,7 +4,7 @@ require "dbconnect.php";
 if(!isset($_SESSION['email'])){
     header('Location: zaloguj.php');
 }
-$user = $_SESSION['email']['email'];
+$user = $_SESSION['email'];
 
 if (isset($_POST['usun_z_koszyka'])){
     $tytul = $_POST['tytul'];
@@ -40,7 +40,7 @@ if (isset($_POST['usun_z_koszyka'])){
     </thead>
     <tbody>
 <?php
-$user = $_SESSION['email']['email'];
+
 $zapytanie = "SELECT tytul, gatunek, cena FROM cart WHERE user = '$user'";
 $wynik = mysqli_query($polaczenie,$zapytanie);
 $cena_calkowita = 0;
