@@ -10,7 +10,7 @@ $film = mysqli_fetch_assoc($wynik);
 if(isset($_POST['dodanaopinia']) && $_POST['random'] == $_SESSION['rand']){
     if(isset($_SESSION['email'])){
         include "Dodawanie_opini.php";
-        $email = $_SESSION['email']['email'];
+        $email = $_SESSION['email'];
         $opinia =$_POST['opinia'];
         $opinia = new Dodawanie_opini($email, $opinia, $idfilmu);
         $opinia->dodajopinie();
