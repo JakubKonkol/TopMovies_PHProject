@@ -33,7 +33,6 @@ p{
 }
 .nawigacyjny{
     z-index: 9;
-    position:relative;
     height: 35px;
     width: 100%;
     top:0;
@@ -53,11 +52,10 @@ p{
 .nawigacyjny a:hover{
     float:right;
     display: block;
-    color: #f2f2f2;
+    color: black;
     text-align: center;
     padding: 10px 10px;
-    color:black;
-    background-color: green;
+    background-color: white;
 
 }
 .nawigacyjny p{
@@ -93,7 +91,7 @@ p{
     font-size:20px;
 
 }
-sortowanie_form{
+.sortowanie_form{
     display: block;
     align-content: center;
     text-align: center;
@@ -117,7 +115,7 @@ sortowanie_form{
     font-size: 18px;
     padding: 2px;
     width: 160px;
-
+    font-family: "Ubuntu", serif;
     transition: all 0.5s;
     cursor: pointer;
     margin: 5px;
@@ -171,6 +169,8 @@ sortowanie_form{
 
 }
 .movies {
+    text-shadow: 2px 2px black;
+    font-family: "Ubuntu", serif;
     display: inline-block;
     border: 1px solid black;
     width: 200px;
@@ -188,7 +188,7 @@ sortowanie_form{
     position:relative;
     margin-bottom: 0;
 }
-.movies:hover .overlay, movies:active .overlay{
+.movies:hover .overlay, .movies:active .overlay{
     opacity: 1;
 }
 .movies .overlay{
@@ -200,12 +200,126 @@ sortowanie_form{
     width: 200px;
     position: relative;
     top:-270px;
-    right: 0px;
+    right: 0;
     opacity: 0;
     transition: .5s ease;
-    background-color: gray;
+    background-color: rgba(108, 122, 137, 0.9);
 
 }
+@media only screen and (max-width: 1000px) {
+
+    .movies {
+        text-shadow: 2px 2px black;
+        font-family: "Ubuntu", serif;
+        display: inline-block;
+        border: 1px solid black;
+        width: 100px;
+        height: 135px;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        text-align: center;
+        background-color: #191919;
+        color:white;
+    }
+    .movies h3{
+        font-size:12px;
+    }
+    .movies img{
+        width: 100px;
+        height: 135px;
+        position:relative;
+        margin-bottom: 0;
+    }
+    .movies:hover .overlay, .movies:active .overlay{
+        opacity: 1;
+    }
+    .movies .overlay{
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+        margin: auto;
+        width: 100px;
+        height: 135px;
+        position: relative;
+        top:-135px;
+        right: 0;
+        opacity: 0;
+        transition: .5s ease;
+        background-color: rgba(108, 122, 137, 0.9);
+
+    }
+    .dodaj_do_koszyka_butt{
+        font-family: "Ubuntu", serif;
+        height: 15px;
+        background-color: green;
+        border: none;
+        color:white;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 8px;
+        width: 90px ;
+        font-size: 7px;
+        align-items: center;
+        margin: 0;
+    }
+    .dodaj_do_koszyka_butt:hover{
+        background-color: darkgreen;
+        border: none;
+        text-align: center;
+        text-decoration: none;
+        font-size:7px;
+    }
+    .szczegolybutt{
+        font-family: "Ubuntu", serif;
+        background-color:blue;
+        border: none;
+        color:white;
+        text-align: center;
+        text-decoration: none;
+        font-size:7px;
+        border-radius: 8px;
+        width: 90px ;
+        align-items: center;
+    }
+    .szczegolybutt:hover{
+        background-color: darkblue;
+        border: none;
+        text-align: center;
+        text-decoration: none;
+        font-size:7px;
+    }
+    .movies input[type='submit']{
+        width: 90px;
+        height: 20px;
+        align-items: center;
+        text-align: center;
+    }
+    .movies form input{
+        padding: 0;
+        margin-top:0;
+        margin-bottom: 0;
+    }
+
+}
+.powiadomienie{
+    height: 35px;
+    position: sticky;
+    top:0;
+    left:0;
+    right:0;
+    background-color: gray;
+    text-align: center;
+    z-index: 90;
+    box-shadow: 0 5px 10px rgba(0,0,0,.1);
+    color: black;
+    font-size: 20px;
+    cursor: pointer;
+    font-family: "Ubuntu", serif;
+    font-weight: bold;
+
+}
+
 
 .movies form input{
 
@@ -214,7 +328,7 @@ sortowanie_form{
 }
 
 .dodaj_do_koszyka_butt{
-    font-family: Quicksand;
+    font-family: "Ubuntu", serif;
     height: 30px;
     background-color: green;
     border: none;
@@ -237,7 +351,7 @@ sortowanie_form{
     font-size:14px;
 }
 .szczegolybutt{
-    font-family: Quicksand;
+    font-family: "Ubuntu", serif;
     background-color:blue;
     border: none;
     padding: 6px 6px;
@@ -273,12 +387,12 @@ sortowanie_form{
     100% {color:teal;}}
 @keyframes gradient {
     0% {
-        background-position: 0% 50%;
+        background-position: 0 50%;
     }
     50% {
         background-position: 100% 50%;
     }
     100% {
-        background-position: 0% 50%;
+        background-position: 0 50%;
     }
 }

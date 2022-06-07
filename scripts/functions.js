@@ -22,6 +22,9 @@ function Dostawa(){
 function Admin(){
     window.location.href="AdminPanel.php";
 }
+function mess(){
+    document.getElementById("mess").remove();
+}
 function sprawdz_haslo(){
     if(document.getElementById("haslo").value == document.getElementById("phaslo").value){
         document.getElementById("warning").style.color = 'green';

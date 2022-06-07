@@ -2,7 +2,30 @@
 require "dbconnect.php";
 $GatunekSet=true;
 session_start();
+if(isset($_POST['dodaj_do_koszyka'])){
+    if(isset($_SESSION['email'])){
+        $tytul = $_POST["tytul"];
+        $gatunek = $_POST["gatunek"];
+        $cena = $_POST["cena"];
+        $mail = $_SESSION['email'];
+        $do_koszyka_sql = "INSERT INTO cart (tytul, gatunek, cena, user) VALUES ('$tytul', '$gatunek', '$cena','$mail')";
+        $polaczenie->query($do_koszyka_sql);
+        setcookie("powiadomienie", "DODANO DO KOSZYKA!");
+        $powiadomienie[] = "Dodano do koszyka!";
+        header("Location: index.php");
+    }else{
+        setcookie("powiadomienie", "MUSISZ BYC ZALOGOWANY!");
+        header("Location: index.php");
+    }
 
+
+}
+if (isset($_COOKIE['powiadomienie'])) {
+    $powiadomienie = $_COOKIE['powiadomienie'];
+    echo "<div class='powiadomienie' id='mess' onclick='this.remove();'> <p>$powiadomienie</p> </div>";
+    setcookie("powiadomienie", "", time()-3600);
+
+}
 ?>
 
 <html lang="PL">
@@ -18,10 +41,15 @@ session_start();
     <link href="https://fonts.googleapis.com/css?family=Archivo:500|Open+Sans:300,700" rel="stylesheet">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <script src="https://kit.fontawesome.com/a9c3b869ed.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
     <link rel="stylesheet" href="cssy/footer.css">
+    <link rel="icon" type="image/x-icon" href="assets/popcorn.png">
     <script src="scripts/functions.js"> </script>
 </head>
 <body>
+
+
+
 <div class="nawigacyjny">
     <a onclick="Koszyk()"><i class="fi fi-rr-shopping-cart"></i> Koszyk</a>
     <a onclick="Profil()"><i class="fi fi-rr-user"></i> Profil</a>
@@ -66,25 +94,6 @@ session_start();
     </div>
     <div class="content-filmy">
 <?php
-if(isset($_POST['dodaj_do_koszyka'])){
-    if(isset($_SESSION['email'])){
-        $tytul = $_POST["tytul"];
-        $gatunek = $_POST["gatunek"];
-        $cena = $_POST["cena"];
-        $mail = $_SESSION['email'];
-        $do_koszyka_sql = "INSERT INTO cart (tytul, gatunek, cena, user) VALUES ('$tytul', '$gatunek', '$cena','$mail')";
-        $polaczenie->query($do_koszyka_sql);
-        header("Location: index.php");
-    }else{
-        echo "<script> powiadomienie('Musisz być zalogowany'); </script>";
-    }
-
-
-}
-
-
-?>
-<?php
 
 if (isset($_POST['formsub']) OR isset($_POST['clickedceny'])) {
 
@@ -122,11 +131,11 @@ if (isset($_POST['formsub']) OR isset($_POST['clickedceny'])) {
                     <input type='hidden' value='$r[genre]' name='gatunek'>
                     <input type='hidden' value='$r[price]' name='cena'>
                  
-                    <input class='dodaj_do_koszyka_butt' type='submit' value='Do koszyka!' name='dodaj_do_koszyka'>
+                    <input id='koszykbutt' class='dodaj_do_koszyka_butt' type='submit' value='Do koszyka!' name='dodaj_do_koszyka'>
                     </form>
                     <form action='filmy/szczegoly.php?id=$r[id]' method='post'>
                     <input type='hidden' value='$r[id]' name='nazwastr'>  
-                    <input type='submit' class='szczegolybutt' name='szczegoly' value='szczegoly'>
+                    <input id='szczegolybutt' type='submit' class='szczegolybutt' name='szczegoly' value='szczegoly'>
                     </form>
                     </div>
                  </div>";
@@ -153,11 +162,11 @@ if($GatunekSet) {
                     <input type='hidden' value='$r[genre]' name='gatunek'>
                     <input type='hidden' value='$r[price]' name='cena'>
                  
-                    <input class='dodaj_do_koszyka_butt' type='submit' value='Do koszyka!' name='dodaj_do_koszyka'>
+                    <input id='koszykbutt' class='dodaj_do_koszyka_butt' type='submit' value='Do koszyka!' name='dodaj_do_koszyka'>
                     </form>
                     <form action='filmy/szczegoly.php?id=$r[id]' method='post'>
                     <input type='hidden' value='$r[id]' name='nazwastr'>  
-                    <input type='submit' class='szczegolybutt' name='szczegoly' value='szczegoly'>
+                    <input id='szczegolybutt' type='submit' class='szczegolybutt' name='szczegoly' value='szczegoly'>
                     </form>
                     </div>
                  </div>";
@@ -166,7 +175,7 @@ if($GatunekSet) {
 ?>
     </div>
 <footer>
-        <p> Strona powstała jako projekt programistyczny na warsztaty programistyczne. To nie jest prawdziwy sklep z filmami. Jakub Konkol S24406 &copy;2022 <a href="https://github.com/JakubKonkol"> Github </p>
+        <p> Strona powstała jako projekt programistyczny na warsztaty programistyczne. Jakub Konkol S24406 &copy;2022 <a href="https://github.com/JakubKonkol"> Github </p>
 
 </footer>
 
