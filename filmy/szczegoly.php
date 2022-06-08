@@ -11,7 +11,7 @@ if(isset($_POST['dodanaopinia']) && $_POST['random'] == $_SESSION['rand']){
     if(isset($_SESSION['email'])){
         include "Dodawanie_opini.php";
         $email = $_SESSION['email'];
-        $opinia =$_POST['opinia'];
+        $opinia =mysqli_real_escape_string($polaczenie, $_POST['opinia']);
         $opinia = new Dodawanie_opini($email, $opinia, $idfilmu);
         $opinia->dodajopinie();
         unset($_POST['dodanaopinia']);
@@ -82,6 +82,7 @@ if(isset($_POST['dodanaopinia']) && $_POST['random'] == $_SESSION['rand']){
     }else{
 
     while($r=mysqli_fetch_assoc($wynik_select)) {
+        $opiniafiltered = htmlspecialchars($r['opinia']);
         echo "
         <div class='pojedynczaopinia'>
         <table> 
@@ -89,7 +90,7 @@ if(isset($_POST['dodanaopinia']) && $_POST['random'] == $_SESSION['rand']){
                 <th>$r[user_email]</th>
             </tr>
             <tr>
-                <td>$r[opinia]</td>
+                <td> $opiniafiltered </td>
             </tr>
         </table>
         </div>

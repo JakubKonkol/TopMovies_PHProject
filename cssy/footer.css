@@ -14,3 +14,22 @@ footer a{
     text-decoration: none;
     color:white;
 }
+@media only screen and (max-width: 1000px) {
+    footer{
+        z-index: 9;
+        position:relative;
+        height: 40px;
+        width: 100%;
+        bottom: 0;
+        position: fixed;
+        overflow: hidden;
+        background-color: #191919;
+        color:white;
+        text-align: center;
+    }
+    footer a{
+        text-decoration: none;
+        color:white;
+    }
+
+}

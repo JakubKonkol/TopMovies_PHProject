@@ -26,7 +26,7 @@ function mess(){
     document.getElementById("mess").remove();
 }
 function sprawdz_haslo(){
-    if(document.getElementById("haslo").value == document.getElementById("phaslo").value){
+    if(document.getElementById("haslo").value === document.getElementById("phaslo").value){
         document.getElementById("warning").style.color = 'green';
         document.getElementById("warning").innerHTML = 'Hasła się zgadzają';
         document.getElementById("zarejestrujbutt").disabled =false;
@@ -55,14 +55,32 @@ function Zmiendane(){
 
 
 }
-function suwakcen(){
-    var x = document.getElementById("zakrescen").value;
-    document.getElementById("zakrescenlabel").innerHTML = x;
-}
 function ZablokujFormularzDostawy(){
     document.getElementById("formularzID").style.visibility = 'hidden';
 }
 function Sortujpokaz(){
     document.getElementById("sortowanie").style.visibility = "visible";
     document.getElementById("pokazsortowanie").parentNode.removeChild(document.getElementById("pokazsortowanie"));
+}
+function togglemenu(){
+    var koszyk = document.getElementById("koszyk");
+    var profil = document.getElementById("profil");
+    var main = document.getElementById("main");
+    var onas = document.getElementById("onas");
+    var dostawa = document.getElementById("dostawa");
+    var nawigacyjny = document.getElementById("nawigacyjny");
+    if(koszyk.style.display=="none" && profil.style.display=="none" && main.style.display=="none" && onas.style.display=="none" &&  dostawa.style.display=="none"){
+        koszyk.style.display="block";
+        profil.style.display="block";
+        main.style.display="block";
+        onas.style.display="block";
+        dostawa.style.display="block";
+
+    }else{
+        koszyk.style.display="none";
+        profil.style.display="none";
+        main.style.display="none";
+        onas.style.display="none";
+        dostawa.style.display="none";
+    }
 }

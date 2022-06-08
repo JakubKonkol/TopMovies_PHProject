@@ -139,17 +139,17 @@ if(mysqli_num_rows($wynik) <= 0){
 }
 if(isset($_POST['zlozzamowienie'])){
     include "MakeOrder.php";
-    $sposob_dostawy = $_POST['sposobdostawy'];
-    $metoda_platnosci = $_POST['metodaplatnosc'];
-    $imie = $_POST['imie'];
-    $nazwisko = $_POST['nazwisko'];
+    $sposob_dostawy = mysqli_real_escape_string($polaczenie,$_POST['sposobdostawy']);
+    $metoda_platnosci = mysqli_real_escape_string($polaczenie, $_POST['metodaplatnosc']);
+    $imie = mysqli_real_escape_string($polaczenie, $_POST['imie']);
+    $nazwisko = mysqli_real_escape_string($polaczenie,$_POST['nazwisko']);
     $email = $user;
-    $nrtel = $_POST['telefon'];
-    $koszt_zamowienia = $_POST['calkowitacena'];
-    $ulica = $_POST['ulica'];
-    $nrdomu = $_POST['nrdomu'];
-    $miasto = $_POST['miasto'];
-    $postcode = $_POST['kodpocztowy'];
+    $nrtel = mysqli_real_escape_string($polaczenie, $_POST['telefon']);
+    $koszt_zamowienia = mysqli_real_escape_string($polaczenie, $_POST['calkowitacena']);
+    $ulica = mysqli_real_escape_string($polaczenie, $_POST['ulica']);
+    $nrdomu = mysqli_real_escape_string($polaczenie, $_POST['nrdomu']);
+    $miasto = mysqli_real_escape_string($polaczenie, $_POST['miasto']);
+    $postcode = mysqli_real_escape_string($polaczenie, $_POST['kodpocztowy']);
 
     $makeorder = new MakeOrder($sposob_dostawy, $metoda_platnosci, $imie, $nazwisko, $email, $nrtel, $koszt_zamowienia,$ulica,$nrdomu,$miasto,$postcode);
     $makeorder->Zamow();

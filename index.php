@@ -22,7 +22,7 @@ if(isset($_POST['dodaj_do_koszyka'])){
 }
 if (isset($_COOKIE['powiadomienie'])) {
     $powiadomienie = $_COOKIE['powiadomienie'];
-    echo "<div class='powiadomienie' id='mess' onclick='this.remove();'> <p>$powiadomienie</p> </div>";
+    echo "<div class='powiadomienie' id='mess' onclick='this.remove();'> <p>$powiadomienie</p> </div> ";
     setcookie("powiadomienie", "", time()-3600);
 
 }
@@ -34,6 +34,7 @@ if (isset($_COOKIE['powiadomienie'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title> TopMovies</title>
+
     <link rel="stylesheet" href="cssy/css.css">
     <link rel="stylesheet" href="cssy/fajnytext.css">
     <link href="https://fonts.googleapis.com/css?family=Cardo:400,700|Oswald" rel="stylesheet">
@@ -45,18 +46,25 @@ if (isset($_COOKIE['powiadomienie'])) {
     <link rel="stylesheet" href="cssy/footer.css">
     <link rel="icon" type="image/x-icon" href="assets/popcorn.png">
     <script src="scripts/functions.js"> </script>
+    <script
+            src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("touchstart", function() {},false);
+    </script>
+    <script> $('#mess').delay(2000).fadeOut('slow');</script>
 </head>
 <body>
 
 
-
-<div class="nawigacyjny">
-    <a onclick="Koszyk()"><i class="fi fi-rr-shopping-cart"></i> Koszyk</a>
-    <a onclick="Profil()"><i class="fi fi-rr-user"></i> Profil</a>
-    <p onClick="MainPage()"><i class="fi fi-rr-home"></i> Strona Główna </p>
-    <p onclick="Onas()"><i class="fi fi-rr-info"></i> O nas </p>
-    <p onclick="Dostawa()"><i class="fi fi-rr-credit-card"></i> Dostawa/Płatnośc </p>
-    <span id="alert" onclick="powiadomienie('')">  </span>
+<div class="nawigacyjny" id="nawigacyjny">
+    <i class="menu" onclick="togglemenu()"> MENU </i>
+    <a id="koszyk" onclick="Koszyk()"><i class="fi fi-rr-shopping-cart"></i> Koszyk</a>
+    <a id="profil" onclick="Profil()"><i class="fi fi-rr-user"></i> Profil</a>
+    <p id="main" onClick="MainPage()"><i class="fi fi-rr-home"></i> Strona Główna </p>
+    <p id="onas" onclick="Onas()"><i class="fi fi-rr-info"></i> O nas </p>
+    <p id="dostawa"  onclick="Dostawa()"><i class="fi fi-rr-credit-card"></i> Dostawa/Płatnośc </p>
 </div>
  <p class="title_text">TopMovies</p>
     <div class="fajnytext"> <div class="scrollowanie-textu">
@@ -116,7 +124,7 @@ if (isset($_POST['formsub']) OR isset($_POST['clickedceny'])) {
     $res1 = mysqli_query($polaczenie, $zapytaniesortowanie);
     while($r=mysqli_fetch_assoc($res1)) {
         echo "
-                <div class='movies'>
+                <div class='movies' onclick=''>
                     
                     <img src='$r[img_src]' alt='zdjecie produktu'>
                 

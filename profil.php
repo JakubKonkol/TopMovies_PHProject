@@ -26,6 +26,11 @@ if(isset($_POST['zmiendane'])){
     header("Location: logowanie.php");
 
 }
+if(isset($_POST['usunkonto'])){
+    $usun_konto_query = "DELETE FROM users WHERE email='$email'";
+    $polaczenie->query($usun_konto_query);
+    header("Location: wyloguj.php");
+}
 
 ?>
 
@@ -45,7 +50,7 @@ if(isset($_POST['zmiendane'])){
 <div class="nawigacyjny">
 
     <a onclick="Wyloguj()"> <i class="fi fi-rr-sign-out-alt"></i> Wyloguj</a>
-    <a onclick="Admin()"><i class="fi fi-rr-settings"></i></i> Admin</a>
+    <a onclick="Admin()"><i class="fi fi-rr-settings"></i> Admin</a>
     <a onclick="Koszyk()"><i class="fi fi-rr-shopping-cart"></i> Koszyk</a>
     <p onClick="MainPage()"> <i class="fi fi-rr-home"></i> Strona Główna </p>
     <span id="alert" onclick="powiadomienie('')">  </span>

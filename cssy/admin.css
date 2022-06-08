@@ -72,10 +72,43 @@ body{
 }
 .tools{
     margin-top: 50px;
-    border: 1px solid black;
     width: 80vw;
     height: auto;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+}
+table{
+    text-align: center;
+    margin: auto;
+    width: 70vw;
+}
+.tabela table{
+    border:1px solid black;
+}
+.tabela th{
+    border:1px solid black;
+    background-color: gray;
+}
+.tabela tr{
+    border:1px solid black;
+}
+.tabela td{
+    border:1px solid black;
+}
+textarea{
+    resize: none;
+    margin-top:5px;
+}
+form input[type='text']{
+    margin-top:5px;
+}
+form input[type='number']{
+    margin-top:5px;
+}
+form input[type='submit']{
+    margin-top:5px;
+}
+form input[type='file']{
+    margin-top:5px;
 }
