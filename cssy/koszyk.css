@@ -48,6 +48,26 @@ th{
     color:white;
     font-weight: bold;
 }
+.editbutt{
+    background-color: dodgerblue;
+    border:none;
+    padding: 7px 12px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 11px;
+    color:white;
+    font-weight: bold;
+}
+.editbutt:hover{
+    background-color: darkblue;
+    border:none;
+    padding: 7px 12px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 11px;
+    color:white;
+    font-weight: bold;
+}
 .nawigacyjny{
     height: 35px;
     width: 100%;

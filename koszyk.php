@@ -14,6 +14,12 @@ if (isset($_POST['usun_z_koszyka'])){
     $polaczenie->query($usuwanie_sql);
     header('Location: koszyk.php');
 }
+if(isset($_POST['update_cart_ilosc'])){
+    $ilosc = $_POST['ilosc_w_koszyku'];
+    $tytul = $_POST['tytul'];
+    mysqli_query($polaczenie, "UPDATE cart SET ilosc = $ilosc WHERE tytul = '$tytul' AND user = '$user'");
+    header('Location: koszyk.php');
+}
 ?>
 <html lang="pl">
 <head>
@@ -36,18 +42,19 @@ if (isset($_POST['usun_z_koszyka'])){
     <th>tytul</th>
     <th>gatunek</th>
     <th>cena</th>
+    <th>ilosc</th>
     <th>usuń</th>
     </thead>
     <tbody>
 <?php
 
-$zapytanie = "SELECT tytul, gatunek, cena FROM cart WHERE user = '$user'";
+$zapytanie = "SELECT tytul, gatunek, cena, ilosc FROM cart WHERE user = '$user'";
 $wynik = mysqli_query($polaczenie,$zapytanie);
 $cena_calkowita = 0;
 
 
 while($r=mysqli_fetch_row($wynik)) {
-    $cena_calkowita = $cena_calkowita + intval($r[2]);
+    $cena_calkowita = $cena_calkowita + (intval($r[2])*intval($r[3]));
     echo
     "
     <form action='koszyk.php' method='post'>
@@ -55,11 +62,16 @@ while($r=mysqli_fetch_row($wynik)) {
         <td> $r[0] </td>
         <td> $r[1] </td>
         <td> $r[2] </td>
+        <td> 
+        <input style='width: 40px'type='number' min='1' max='99' name='ilosc_w_koszyku' value='$r[3]'>
+        <input type='submit' value='zmień' name='update_cart_ilosc' class='editbutt'>
+        </td>
         <td> <input type='submit' value='usuń' name='usun_z_koszyka' class='usunbutt'> </td>
     </tr>   
      <input type='hidden' value='$r[0]' name='tytul'>
      <input type='hidden' value='$r[1]' name='gatunek'>
      <input type='hidden' value='$r[2]' name='cena'>
+     <input type='hidden' value='$r[3]' name='ilosc'>
     </form>
     ";
 

@@ -2,17 +2,25 @@
 require "dbconnect.php";
 $GatunekSet=true;
 session_start();
+$username = $_SESSION['email'];
 if(isset($_POST['dodaj_do_koszyka'])){
     if(isset($_SESSION['email'])){
         $tytul = $_POST["tytul"];
         $gatunek = $_POST["gatunek"];
         $cena = $_POST["cena"];
         $mail = $_SESSION['email'];
-        $do_koszyka_sql = "INSERT INTO cart (tytul, gatunek, cena, user) VALUES ('$tytul', '$gatunek', '$cena','$mail')";
-        $polaczenie->query($do_koszyka_sql);
-        setcookie("powiadomienie", "DODANO DO KOSZYKA!");
-        $powiadomienie[] = "Dodano do koszyka!";
-        header("Location: index.php");
+        $sprilosc = "SELECT ilosc FROM cart WHERE tytul = '$tytul' AND user = '$username'";
+        $spriloscquery = mysqli_query($polaczenie, $sprilosc);
+        if(mysqli_num_rows($spriloscquery) > 0 ){
+            setcookie("powiadomienie", "PRODUKT JUZ JEST W KOSZYKU!");
+            header("Location: index.php");
+        }else{
+            $do_koszyka_sql = "INSERT INTO cart (tytul, gatunek, cena, user, ilosc) VALUES ('$tytul', '$gatunek', '$cena','$mail',1)";
+            $polaczenie->query($do_koszyka_sql);
+            setcookie("powiadomienie", "DODANO DO KOSZYKA!");
+            header("Location: index.php");
+        }
+
     }else{
         setcookie("powiadomienie", "MUSISZ BYC ZALOGOWANY!");
         header("Location: index.php");
