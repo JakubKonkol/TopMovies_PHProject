@@ -31,11 +31,12 @@ class AdminClass{
                         <tbody>
                 ";
             while ($r=mysqli_fetch_assoc($select)){
+                $opinia = htmlspecialchars($r['opinia']);
                 echo "
             <tr>
                 <td>$r[id_filmu]</td>
                 <td>$r[user_email]</td>
-                <td>$r[opinia]</td>
+                <td>$opinia</td>
                 <td><form action='AdminPanel.php?panel=opinie' method='post'> <input type='hidden' name='idopini' value='$r[id]'>  <input name='delopinia' type='submit' value='usun'> </form></td>
             </tr>
         ";

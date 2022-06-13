@@ -151,20 +151,61 @@ if(mysqli_num_rows($wynik) <= 0){
 }
 if(isset($_POST['zlozzamowienie'])){
     include "MakeOrder.php";
+    $email = $user;
     $sposob_dostawy = mysqli_real_escape_string($polaczenie,$_POST['sposobdostawy']);
     $metoda_platnosci = mysqli_real_escape_string($polaczenie, $_POST['metodaplatnosc']);
-    $imie = mysqli_real_escape_string($polaczenie, $_POST['imie']);
-    $nazwisko = mysqli_real_escape_string($polaczenie,$_POST['nazwisko']);
-    $email = $user;
-    $nrtel = mysqli_real_escape_string($polaczenie, $_POST['telefon']);
+    $danepoprawne = True;
+    if(preg_match('/^[a-z]$/', $_POST['imie'])){
+        $imie = mysqli_real_escape_string($polaczenie, $_POST['imie']);
+        $danepoprawne = True;
+    }else{
+        $danepoprawne = False;
+    }
+    if(preg_match('/^[a-z]$/', $_POST['nazwisko'])){
+        $nazwisko = mysqli_real_escape_string($polaczenie,$_POST['nazwisko']);
+        $danepoprawne = True;
+    }else{
+        $danepoprawne = False;
+    }
+    if(preg_match('/^[0-9]{9}$/', $_POST['telefon'])){
+        $nrtel = mysqli_real_escape_string($polaczenie, $_POST['telefon']);
+        $danepoprawne = True;
+    }else{
+        $danepoprawne = False;
+    }
     $koszt_zamowienia = mysqli_real_escape_string($polaczenie, $_POST['calkowitacena']);
-    $ulica = mysqli_real_escape_string($polaczenie, $_POST['ulica']);
-    $nrdomu = mysqli_real_escape_string($polaczenie, $_POST['nrdomu']);
-    $miasto = mysqli_real_escape_string($polaczenie, $_POST['miasto']);
-    $postcode = mysqli_real_escape_string($polaczenie, $_POST['kodpocztowy']);
+    if(preg_match('/^[a-z]$/', $_POST['ulica'])){
+        $danepoprawne = True;
+        $ulica = mysqli_real_escape_string($polaczenie, $_POST['ulica']);
+    }else{
+        $danepoprawne = False;
+    }
+    if(preg_match('/^[0-9]$/', $_POST['nrdomu'])){
+        $danepoprawne = True;
+        $nrdomu = mysqli_real_escape_string($polaczenie, $_POST['nrdomu']);
+    }else{
+        $danepoprawne = False;
+    }
+    if(preg_match('/^[a-z]$/', $_POST['miasto'])){
+        $danepoprawne = True;
+        $miasto = mysqli_real_escape_string($polaczenie, $_POST['miasto']);
+    }else{
+        $danepoprawne = False;
+    }
+    if(preg_match('/^[0-9]{5}$/', $_POST['kodpocztowy'])){
+        $danepoprawne = True;
+        $postcode = mysqli_real_escape_string($polaczenie, $_POST['kodpocztowy']);
+    }else{
+        $danepoprawne = False;
+    }
 
-    $makeorder = new MakeOrder($sposob_dostawy, $metoda_platnosci, $imie, $nazwisko, $email, $nrtel, $koszt_zamowienia,$ulica,$nrdomu,$miasto,$postcode);
-    $makeorder->Zamow();
+    if($danepoprawne){
+        $makeorder = new MakeOrder($sposob_dostawy, $metoda_platnosci, $imie, $nazwisko, $email, $nrtel, $koszt_zamowienia,$ulica,$nrdomu,$miasto,$postcode);
+        $makeorder->Zamow();
+    }else if($danepoprawne == False){
+        echo "podaj poprawne dane";
+    }
+
 
 }
 
