@@ -20,19 +20,15 @@ if(isset($_POST['dodaj_do_koszyka'])){
             setcookie("powiadomienie", "DODANO DO KOSZYKA!");
             header("Location: index.php");
         }
-
     }else{
         setcookie("powiadomienie", "MUSISZ BYC ZALOGOWANY!");
         header("Location: index.php");
     }
-
-
 }
 if (isset($_COOKIE['powiadomienie'])) {
     $powiadomienie = $_COOKIE['powiadomienie'];
     echo "<div class='powiadomienie' id='mess' onclick='this.remove();'> <p>$powiadomienie</p> </div> ";
     setcookie("powiadomienie", "", time()-3600);
-
 }
 ?>
 
